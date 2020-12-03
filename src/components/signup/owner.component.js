@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../navbar.component';
 import axios from 'axios';
 
 export default class OwnerSU extends Component {
@@ -83,7 +84,7 @@ export default class OwnerSU extends Component {
             };
 
             if (res.data.email) {
-                window.location = '/';  //handle user page have every thing of user in res.data
+                window.location = '/login';  //handle user page have every thing of user in res.data
             };
         });
     }
@@ -91,6 +92,8 @@ export default class OwnerSU extends Component {
     render() {
         return (
             <div>
+                <Navbar />
+                <br />
                 {
                     this.state.errors.map((err, index) =>
                         <div className='alert alert-danger' key={index}>{err}</div>)

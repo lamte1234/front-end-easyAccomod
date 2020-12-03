@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from './navbar.component';
 import axios from 'axios';
 
 export default class Login extends Component {
@@ -53,7 +54,7 @@ export default class Login extends Component {
             };
 
             if(res.data.email){
-                window.location = '/';  //handle user page have every thing of user in res.data
+                window.location = '/users' + res.data.user_type + res.data._id;  //handle user page have every thing of user in res.data
             };
         });
     }
@@ -62,6 +63,8 @@ export default class Login extends Component {
     render() {
         return (
             <div>
+                <Navbar />
+                <br />
                 {
                     this.state.errors.map((err,index) => 
                     <div className='alert alert-danger' key={index}>{err}</div>)
