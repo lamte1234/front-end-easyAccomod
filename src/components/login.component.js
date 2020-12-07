@@ -45,7 +45,7 @@ export default class Login extends Component {
             account_type: this.state.account_type
         };
 
-        axios.post('http://localhost:5000/login/', user).then(res => {
+        axios.post('http://localhost:5000/login', user).then(res => {
             console.log(res.data);
             if(res.data.errors) {
                 this.setState({
@@ -54,7 +54,7 @@ export default class Login extends Component {
             };
 
             if(res.data.email){
-                window.location = '/users' + res.data.user_type + res.data._id;  //handle user page have every thing of user in res.data
+                window.location = `/users/${res.data.user_type}/${res.data._id}`;  //handle user page have every thing of user in res.data
             };
         });
     }
