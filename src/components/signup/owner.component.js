@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../navbar.component';
 import axios from 'axios';
 
 export default class OwnerSU extends Component {
@@ -91,6 +92,7 @@ export default class OwnerSU extends Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <div className="container">
                     <br />
                     {

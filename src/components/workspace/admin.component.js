@@ -2,23 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav() {
-    // sửa to attrs ở Link tag
     return(
     <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
-        <Link to="/users/renter" className="navbar-brand">EasyAccomod</Link>
+        <Link to="/users/admin" className="navbar-brand">EasyAccomod</Link>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Notifications</Link>
+                    <Link to="/users/admin" className="nav-link">Notifications</Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Manage Posts</Link>
+                    <Link to="/users/admin/posts" className="nav-link">Manage Posts</Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Manage Accounts</Link>
+                    {/* fix later */}
+                    <Link to="/users/admin/accounts" className="nav-link">Manage Accounts</Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Statistics</Link>
+                    {/* fix later */}
+                    <Link to="/users/admin" className="nav-link">Statistics</Link>
                 </li>
             </ul>
         </div>

@@ -8,10 +8,10 @@ function Nav() {
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Search</Link>
+                    <Link to="/users/renter/search" className="nav-link">Search</Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/users/renter" className="nav-link">Wish-list</Link>
+                    <Link to="/users/renter/wishlist" className="nav-link">Wish-list</Link>
                 </li>
             </ul>
         </div>
