@@ -63,29 +63,31 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <br />
-                {
-                    this.state.errors.map((err,index) => 
-                    <div className='alert alert-danger' key={index}>{err}</div>)
-                }
-                <form action="/login" method="POST" onSubmit={this.onSubmit}>
-                    <div className="form-group"><label htmlFor="email">Email</label>
-                        <input className="form-control" id="email" type="email"
-                        name="email" value={this.state.email} onChange={this.onChangeEmail} />
-                    </div>
-                    <div className="form-group"><label htmlFor="password">Password</label>
-                        <input className="form-control" id="password" type="password"
-                        name="password" value={this.state.password} onChange={this.onChangePassword} />
-                    </div>
-                    <div className="form-group"> <label htmlFor="account_type">Account Type</label>
-                        <select className="form-control" id="account-type" name="account_type"
-                         value={this.state.account_type} onChange={this.onChangeAccountType}>
-                            <option value="owner_account" defaultValue>Owner</option>
-                            <option value="renter_account">Renter</option>
-                            <option value="admin_account">Admin</option></select></div>
-                    <button className="btn btn-primary">Login</button>
-                </form>
+                <div className="container">
+                    <br />
+                    {
+                        this.state.errors.map((err,index) => 
+                        <div className='alert alert-danger' key={index}>{err}</div>)
+                    }
+                    <form action="/login" method="POST" onSubmit={this.onSubmit}>
+                        <div className="form-group"><label htmlFor="email">Email</label>
+                            <input className="form-control" id="email" type="email"
+                            name="email" value={this.state.email} onChange={this.onChangeEmail} />
+                        </div>
+                        <div className="form-group"><label htmlFor="password">Password</label>
+                            <input className="form-control" id="password" type="password"
+                            name="password" value={this.state.password} onChange={this.onChangePassword} />
+                        </div>
+                        <div className="form-group"> <label htmlFor="account_type">Account Type</label>
+                            <select className="form-control" id="account-type" name="account_type"
+                            value={this.state.account_type} onChange={this.onChangeAccountType}>
+                                <option value="owner_account" defaultValue>Owner</option>
+                                <option value="renter_account">Renter</option>
+                                <option value="admin_account">Admin</option></select></div>
+                        <button className="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                
             </div>
         );
     }

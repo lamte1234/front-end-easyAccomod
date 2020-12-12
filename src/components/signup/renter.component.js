@@ -69,23 +69,25 @@ export default class RenterSU extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <br />
-                {
-                    this.state.errors.map((err, index) =>
-                        <div className='alert alert-danger' key={index}>{err}</div>)
-                }
-                <form action="/signup/renter" method="POST" onSubmit={this.onSubmit}>
-                    <div className="form-group"><label htmlFor="email" >Email</label>
-                        <input className="form-control" id="email" type="email" name="email" value={this.state.email} onChange={this.onChangeEmail} /></div>
-                    <div className="form-group"><label htmlFor="name">Name</label>
-                        <input className="form-control" id="name" type="text" name="name" value={this.state.name} onChange={this.onChangeName} /></div>
-                    <div className="form-group"><label htmlFor="password">Password</label>
-                        <input className="form-control" id="password" type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /></div>
-                    <div className="form-group"><label htmlFor="cf_pass">Confirm Password</label>
-                        <input className="form-control" id="cf_pass" type="password" name="cf_pass" value={this.state.cf_pass} onChange={this.onChangeCfPass} /></div>
-                    <button className="btn btn-primary">Sign Up</button>
-                </form>
+                <div className="container">
+                    <br />
+                    {
+                        this.state.errors.map((err, index) =>
+                            <div className='alert alert-danger' key={index}>{err}</div>)
+                    }
+                    <form action="/signup/renter" method="POST" onSubmit={this.onSubmit}>
+                        <div className="form-group"><label htmlFor="email" >Email</label>
+                            <input className="form-control" id="email" type="email" name="email" value={this.state.email} onChange={this.onChangeEmail} /></div>
+                        <div className="form-group"><label htmlFor="name">Name</label>
+                            <input className="form-control" id="name" type="text" name="name" value={this.state.name} onChange={this.onChangeName} /></div>
+                        <div className="form-group"><label htmlFor="password">Password</label>
+                            <input className="form-control" id="password" type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /></div>
+                        <div className="form-group"><label htmlFor="cf_pass">Confirm Password</label>
+                            <input className="form-control" id="cf_pass" type="password" name="cf_pass" value={this.state.cf_pass} onChange={this.onChangeCfPass} /></div>
+                        <button className="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+                
             </div>
         );
     }

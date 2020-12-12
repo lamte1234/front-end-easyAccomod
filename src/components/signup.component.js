@@ -6,10 +6,12 @@ export default class Signup extends Component {
     render() {
         return(
             <div>
-                <Navbar />
-                <br />
-                <Link to="/signup/renter" className="nav-link">Renter</Link>
-                <Link to="/signup/owner" className="nav-link">Owner</Link>
+                <div className="container">
+                    <br />
+                    <Link to="/signup/renter" className="nav-link">Renter</Link>
+                    <Link to="/signup/owner" className="nav-link">Owner</Link>
+                </div>
+                
             </div>
         );
     }
