@@ -1,5 +1,33 @@
 import axios from 'axios';
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+
+
+function Nav() {
+    return(
+    <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
+        <Link to="/users/admin" className="navbar-brand">EasyAccomod</Link>
+        <div className="collpase navbar-collapse">
+            <ul className="navbar-nav mr-auto">
+                <li className="navbar-item">
+                    <Link to="/users/admin" className="nav-link">Notifications</Link>
+                </li>
+                <li className="navbar-item">
+                    <Link to="/users/admin/posts" className="nav-link">Manage Posts</Link>
+                </li>
+                <li className="navbar-item">
+                    {/* fix later */}
+                    <Link to="/users/admin/accounts" className="nav-link">Manage Accounts</Link>
+                </li>
+                <li className="navbar-item">
+                    {/* fix later */}
+                    <Link to="/users/admin" className="nav-link">Statistics</Link>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    );
+}
 
 const Account = props => (
     <tr>
@@ -11,6 +39,7 @@ const Account = props => (
         <td><a href="" onClick={() => props.approve(props.account._id)}>Approved</a></td>
     </tr>
 )
+
 
 export default class AdminAcc extends Component {
     constructor(props){
@@ -52,6 +81,9 @@ export default class AdminAcc extends Component {
     render() {
         return(
             <div>
+                <Nav />
+                <br />
+                <div className='container'>
                 <table className='table'>
                     <thead className="thead-light">
                         <tr>
@@ -60,12 +92,14 @@ export default class AdminAcc extends Component {
                             <th scope="col">ID Number</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Address</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.accountList()}
                     </tbody>
                 </table>
+                </div>
             </div>
         );
     }
