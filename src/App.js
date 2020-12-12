@@ -11,6 +11,7 @@ import OwnerWS from './components/workspace/owner.component';
 import AdminWS from './components/workspace/admin.component';
 import Navbar from './components/navbar.component';
 import Post from './components/post.component';
+import AdminAcc from './components/adminAccount.component';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path='/users/renter/:id' exact component={RenterWS}></Route>
       <Route path='/users/owner/:id' exact component={OwnerWS}></Route>
       <Route path='/users/admin/:id' exact component={AdminWS}></Route>
+      <Route path='/users/admin/accounts' exact component={AdminAcc}></Route>
     </Router>
   );
 }
