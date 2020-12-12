@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './navbar.component';
 import axios from 'axios';
 
 export default class Login extends Component {

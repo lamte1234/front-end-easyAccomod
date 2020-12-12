@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './navbar.component';
 import axios from 'axios';
 
 export default class Post extends Component {
@@ -21,7 +20,6 @@ export default class Post extends Component {
         this.onChangeElectricity = this.onChangeElectricity.bind(this);
         this.onChangeWater = this.onChangeWater.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
-        this.onChangeStatus = this.onChangeStatus.bind(this);
         this.onChangeTime = this.onChangeTime.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -41,8 +39,6 @@ export default class Post extends Component {
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
             image: [],
-            status: false,
-            // is_approved: '',
             time: '',
             errors: []
         }
@@ -98,25 +94,25 @@ export default class Post extends Component {
 
     onChangeBathroom(e) {
         this.setState({
-            bathroom: e.target.value
+            bathroom: !this.state.bathroom
         })
     };
 
     onChangeKitchen(e) {
         this.setState({
-            kitchen: e.target.value
+            kitchen: !this.state.kitchen
         })
     };
 
     onChangeAirCon(e) {
         this.setState({
-            air_con: e.target.value
+            air_con: !this.state.air_con
         })
     };
 
     onChangeWaterHeater(e) {
         this.setState({
-            water_heater: e.target.value
+            water_heater: !this.state.water_heater
         })
     };
 
@@ -133,16 +129,17 @@ export default class Post extends Component {
     };
 
     onChangeImage(e) {
-        this.setState({ 
-            image: e.target.files[0] 
+        console.log(e.target.files);
+        let files = e.target.files;
+        let img = []
+        for(const file in files){
+            img.push(files[file]);
+        };
+        this.setState({
+            image: img
         });
     };
 
-    onChangeStatus(e) {
-        this.setState({
-            status: e.target.value
-        })
-    };
 
     onChangeTime(e) {
         this.setState({
@@ -167,28 +164,10 @@ export default class Post extends Component {
         data.set("water_heater",this.state.water_heater);
         data.set("electricity",this.state.electricity);
         data.set("water",this.state.water);
-        data.append("image",this.state.image);
-        data.set("status",this.state.status);
         data.set("time",this.state.time);
-        // const dataRenter = {
-        //     title: this.state.title,
-        //     city: this.state.city,
-        //     district: this.state.district,
-        //     ward: this.state.ward,
-        //     street: this.state.street,
-        //     room_type: this.state.room_type,
-        //     rented_rate: this.state.rented_rate, //vnd per month
-        //     area: this.state.area,
-        //     bathroom: this.state.bathroom,
-        //     kitchen: this.state.kitchen,
-        //     air_con: this.state.air_con,
-        //     water_heater: this.state.water_heater,
-        //     electricity: this.state.electricity, //vnd per kwh
-        //     water: this.state.water, //vnd per m3
-        //     image: this.state.image,    
-        //     status: this.state.status,
-        //     time: this.state.time,
-        // }
+        this.state.image.forEach(img => {
+            data.append('image', img);
+        })
 
         axios.post('http://localhost:5000/users/owner/post', data).then(res => {
             console.log(res.data);
@@ -198,9 +177,6 @@ export default class Post extends Component {
                 })
             };
 
-            if (res.data.email) {
-                window.location = '/';  //handle user page have every thing of user in res.data
-            };
         });
     }
 
@@ -233,10 +209,10 @@ export default class Post extends Component {
                             <input className="form-control" id="room_type" type="text" name="room_type" 
                             value={this.state.room_type} onChange={this.onChangeRoomType} /></div>
                         <div className="form-group"><label htmlFor="rented_rate">Rented Rate</label>
-                            <input className="form-control" id="rented_rate" type="text" name="rented_rate" 
+                            <input className="form-control" id="rented_rate" type="number" name="rented_rate" 
                             value={this.state.rented_rate} onChange={this.onChangeRentedRate} /></div>
                         <div className="form-group"><label htmlFor="area">Area</label>
-                            <input className="form-control" id="area" type="text" name="area" 
+                            <input className="form-control" id="area" type="number" name="area" 
                             value={this.state.area} onChange={this.onChangeArea} /></div>
                         <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
                             <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
@@ -256,15 +232,12 @@ export default class Post extends Component {
                         <div className="form-group"><label htmlFor="water">Water</label>
                             <input className="form-control" id="water" type="number" name="water" 
                             value={this.state.water} onChange={this.onChangeWater} /></div>
+                        <div className="form-group"><label htmlFor="time">Time</label>
+                            <input className="form-control" id="time" type="number" name="time" 
+                            value={this.state.time} onChange={this.onChangeTime} /></div>
                         <div className="form-group"><label htmlFor="image">Image</label>
                             <input className="" id="image" type="file" name="image" accept="image/*" multiple 
                             onChange={this.onChangeImage} /></div>
-                        <div className="form-group"><label htmlFor="status">Status</label>
-                            <input className="form-control" id="status" type="checkbox" name="status" 
-                            value={this.state.status} onChange={this.onChangeStatus} /></div>
-                        <div className="form-group"><label htmlFor="time">Time</label>
-                            <input className="form-control" id="time" type="text" name="time" 
-                            value={this.state.time} onChange={this.onChangeTime} /></div>
                         <button className="btn btn-primary">Commit</button>
                     </form>
                 </div>
