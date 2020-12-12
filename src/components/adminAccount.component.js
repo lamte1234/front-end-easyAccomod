@@ -8,13 +8,15 @@ const Account = props => (
         <td>{props.account.id_card_number}</td>
         <td>{props.account.phone}</td>
         <td>{props.account.address}</td>
-        <td><a href="#">Approved</a></td>
+        <td><a href="" onClick={() => props.approve(props.account._id)}>Approved</a></td>
     </tr>
 )
 
 export default class AdminAcc extends Component {
     constructor(props){
         super(props);
+
+        this.approveAccount = this.approveAccount.bind(this);
 
         this.state = {
             accounts: []
@@ -33,7 +35,17 @@ export default class AdminAcc extends Component {
 
     accountList () {
         return this.state.accounts.map((account,index) => {
-            return <Account account={account} key={index}></Account>
+            return <Account account={account} key={index} approve={this.approveAccount}></Account>
+        })
+    }
+
+    approveAccount (id) {
+        axios.patch(`http://localhost:5000/users/admin/accounts/${id}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+
+        this.setState({
+            accounts: this.state.accounts.filter(account => account._id !== id)
         })
     }
 
