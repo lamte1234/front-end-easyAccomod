@@ -80,6 +80,9 @@ export default class PostDetail extends Component {
                         <li>Water rate: {this.state.water} per M3</li>
                         <li>Rented Rate: {this.state.rented_rate} per Month</li>
                     </ul>
+                    {this.state.image.map((img, index) => 
+                        <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
+                    )}
                 </div>
             </div>
         )
