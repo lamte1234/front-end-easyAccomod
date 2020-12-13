@@ -31,7 +31,7 @@ export default class PostDetail extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/admin/posts/'+this.props.match.params.id)
+        axios.get('http://localhost:5000/users/admin/posts/'+this.props.match.params.id, {withCredentials: true})
         .then(res => this.setState({
             id: res.data._id,
             title: res.data.title,
@@ -55,7 +55,7 @@ export default class PostDetail extends Component {
     }
     
     approvePost (id) {
-        axios.patch(`http://localhost:5000/users/admin/posts/${id}`)
+        axios.patch(`http://localhost:5000/users/admin/posts/${id}`, {withCredentials: true})
         .then(res => {
             console.log(res.data);  
             window.location = '/users/admin/posts';

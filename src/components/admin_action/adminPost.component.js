@@ -27,7 +27,7 @@ export default class ApprovePost extends Component {
       }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/admin/posts')
+        axios.get('http://localhost:5000/users/admin/posts', {withCredentials: true})
         .then(res => {
             this.setState({
                 posts: res.data

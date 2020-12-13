@@ -171,7 +171,7 @@ export default class Post extends Component {
             data.append('image', img);
         })
 
-        axios.post('http://localhost:5000/users/owner/post', data).then(res => {
+        axios.post('http://localhost:5000/users/owner/post', data, {withCredentials: true}).then(res => {
             console.log(res.data);
             if (res.data.errors) {
                 this.setState({

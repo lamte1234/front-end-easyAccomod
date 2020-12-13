@@ -27,7 +27,7 @@ export default class AdminAcc extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/admin/accounts')
+        axios.get('http://localhost:5000/users/admin/accounts',{withCredentials: true})
         .then(res => {
             this.setState({
                 accounts: res.data
@@ -43,7 +43,7 @@ export default class AdminAcc extends Component {
     }
 
     approveAccount (id) {
-        axios.patch(`http://localhost:5000/users/admin/accounts/${id}`)
+        axios.patch(`http://localhost:5000/users/admin/accounts/${id}`, {withCredentials: true})
         .then(res => console.log(res.data))
         .catch(err => console.log(err));
 

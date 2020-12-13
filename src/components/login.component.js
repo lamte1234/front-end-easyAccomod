@@ -45,7 +45,8 @@ export default class Login extends Component {
             account_type: this.state.account_type
         };
 
-        axios.post('http://localhost:5000/login', user).then(res => {
+        axios.post('http://localhost:5000/login', user,{withCredentials: true})
+        .then(res => {
             console.log(res.data);
             if(res.data.errors) {
                 this.setState({

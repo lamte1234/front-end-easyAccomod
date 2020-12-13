@@ -30,7 +30,7 @@ export default class PostDetail extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/users/renter/post/'+this.props.match.params.id)
+        axios.get('http://localhost:5000/users/renter/post/'+this.props.match.params.id,{withCredentials: true})
         .then(res => this.setState({
             title: res.data.title,
             city: res.data.city,
