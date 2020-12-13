@@ -10,8 +10,8 @@ import RenterWS from './components/workspace/renter.component';
 import OwnerWS from './components/workspace/owner.component';
 import AdminWS from './components/workspace/admin.component';
 import Navbar from './components/navbar.component';
-import Post from './components/post.component';
-import AdminAcc from './components/adminAccount.component';
+import Post from './components/owner_action/post.component';
+import AdminAcc from './components/admin_action/adminAccount.component';
 
 function App() {
   return (
