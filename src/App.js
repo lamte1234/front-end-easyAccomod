@@ -14,6 +14,8 @@ import Search from './components/renter_action/search.component';
 import PostDetail from './components/renter_action/post_details';
 import Post from './components/owner_action/post.component';
 import AdminAcc from './components/admin_action/adminAccount.component';
+import AdminPost from './components/admin_action/adminPost.component';
+import ApprovePost from './components/admin_action/approvePost.component';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
       <Route path='/users/owner/' exact component={OwnerWS}></Route>
       <Route path='/users/admin/' exact component={AdminWS}></Route>
       <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
+      <Route path='/users/admin/posts/' exact component={AdminPost}></Route>
+      <Route path='/users/admin/posts/:id' exact component={ApprovePost}></Route>
     </Router>
   );
 }
