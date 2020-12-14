@@ -23,6 +23,9 @@ export default class Post extends Component {
         this.onChangeWater = this.onChangeWater.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
         this.onChangeTime = this.onChangeTime.bind(this);
+        this.onChangeOwner = this.onChangeOwner.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePhone = this.onChangePhone.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -42,6 +45,9 @@ export default class Post extends Component {
             water: '', //vnd per m3
             image: [],
             time: '',
+            owner: '',
+            email: '',
+            phone: '',
             errors: []
         }
 
@@ -149,6 +155,23 @@ export default class Post extends Component {
         })
     };
 
+    onChangeOwner(e) {
+        this.setState({
+            owner: e.target.value
+        })
+    };
+
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        })
+    };
+
+    onChangePhone(e) {
+        this.setState({
+            phone: e.target.value
+        })
+    };
     onSubmit(e) {
         e.preventDefault();
         let data = new FormData();
@@ -167,6 +190,9 @@ export default class Post extends Component {
         data.set("electricity",this.state.electricity);
         data.set("water",this.state.water);
         data.set("time",this.state.time);
+        data.set("owner",this.state.owner);
+        data.set("email",this.state.email);
+        data.set("phone",this.state.phone);
         this.state.image.forEach(img => {
             data.append('image', img);
         })
@@ -241,6 +267,16 @@ export default class Post extends Component {
                         <div className="form-group"><label htmlFor="image">Image</label>
                             <input className="" id="image" type="file" name="image" accept="image/*" multiple 
                             onChange={this.onChangeImage} /></div>
+                        <h3>Contact Infomation</h3>
+                        <div className="form-group"><label htmlFor="name">Owner</label>
+                            <input className="form-control" id="owner" type="text" name="owner"
+                            value={this.state.owner} onChange={this.onChangeOwner} /></div>
+                        <div className="form-group"><label htmlFor="email">Email</label>
+                            <input className="form-control" id="email" type="email" name="email" 
+                            value={this.state.email} onChange={this.onChangeEmail} /></div>
+                        <div className="form-group"><label htmlFor="phone">Phone</label>
+                            <input className="form-control" id="phone" type="number" name="phone" 
+                            value={this.state.phone} onChange={this.onChangePhone} /></div>
                         <button className="btn btn-primary">Commit</button>
                     </form>
                 </div>

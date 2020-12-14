@@ -26,7 +26,10 @@ export default class PostDetail extends Component {
             water_heater: false,
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
-            image: []
+            image: [],
+            owner: '',
+            email: '',
+            phone: ''
         }
     }
 
@@ -48,7 +51,10 @@ export default class PostDetail extends Component {
             water_heater: res.data.water_heater,
             electricity: res.data.electricity, //vnd per kwh
             water: res.data.water, //vnd per m3
-            image: res.data.image
+            image: res.data.image,
+            owner: res.data.owner,
+            email: res.data.email,
+            phone: res.data.phone
         }))
         .catch(err => console.log(err));
         
@@ -96,6 +102,10 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
+                    <h3>Contact Infomation</h3>
+                    <p>Owner: {this.state.owner}</p>
+                    <p>Email: {this.state.email}</p>
+                    <p>Phone: {this.state.phone}</p>
                     <button className="btn1" onClick={() => this.approvePost(this.state.id)}>Approve</button>
                 </div>
             </div>
