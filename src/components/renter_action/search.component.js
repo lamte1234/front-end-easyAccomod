@@ -101,9 +101,10 @@ export default class Search extends Component {
         e.preventDefault();
 
         const data = {
-            ...this.state
+            ...this.state,
+            withCredentials: true
         }
-        axios.get('http://localhost:5000/users/renter/search', data, {withCredentials: true})
+        axios.get('http://localhost:5000/users/renter/search', data)
         .then(res => {this.setState({
             posts: res.data
         })

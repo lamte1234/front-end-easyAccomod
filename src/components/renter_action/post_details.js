@@ -8,7 +8,7 @@ export default class PostDetail extends Component {
     constructor(props) {
         super(props);
 
-
+        this.addToWishlist = this.addToWishlist.bind(this);
 
         this.state = {
             title: '',
@@ -25,7 +25,10 @@ export default class PostDetail extends Component {
             water_heater: false,
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
-            image: []
+            image: [],
+            views: '',
+            likes: '',
+            addWishlistSuccess: false
         }
     }
 
@@ -46,13 +49,26 @@ export default class PostDetail extends Component {
             water_heater: res.data.water_heater,
             electricity: res.data.electricity, //vnd per kwh
             water: res.data.water, //vnd per m3
-            image: res.data.image
+            image: res.data.image,
+            views: res.data.views,
+            likes: res.data.likes
         }))
         .catch(err => console.log(err));
     }
 
 
-
+    addToWishlist() {
+        axios.patch('http://localhost:5000/users/renter/wishlist/'+this.props.match.params.id,{},{withCredentials: true})
+        .then(res => {
+            if(res.status === 200){
+                this.setState({
+                    addWishlistSuccess: true
+                })
+            }
+            console.log(this.state.addWishlistSuccess);
+        }) //handle notification
+        .catch(err => console.log(err));
+    }
 
     render() {
         return(
@@ -83,6 +99,10 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
+                    <p className="small">Views: {this.state.views}</p>
+                    <p className="small">Likes: {this.state.likes}</p>
+                    {this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
+                    
                 </div>
             </div>
         )
