@@ -21,6 +21,10 @@ export default function Nav() {
                     {/* fix later */}
                     <Link to="/users/admin" className="nav-link">Statistics</Link>
                 </li>
+                <li className="navbar-item">
+                    {/* fix later */}
+                    <Link to="/users/admin/edit-auth" className="nav-link">Manage Edit</Link>
+                </li>
             </ul>
         </div>
     </nav>

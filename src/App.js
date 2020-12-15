@@ -18,6 +18,7 @@ import AdminPost from './components/admin_action/adminPost.component';
 import ApprovePost from './components/admin_action/approvePost.component';
 import OwnerPost from './components/owner_action/ownerPost.component';
 import EditPost from './components/owner_action/editPost.component';
+import EditAcc from './components/admin_action/approveEditAcc.component';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <Route path='/users/admin/posts/:id' exact component={ApprovePost}></Route>
       <Route path='/users/owner/edit' exact component={OwnerPost}></Route>
       <Route path='/users/owner/edit/:id' exact component={EditPost}></Route>
+      <Route path='/users/admin/edit-auth/' exact component={EditAcc}></Route>
     </Router>
   );
 }
