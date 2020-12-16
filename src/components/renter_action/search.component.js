@@ -99,12 +99,23 @@ export default class Search extends Component {
     }
     onSubmit(e) {
         e.preventDefault();
-
-        const data = {
-            ...this.state,
+        let params= {};
+        for (const st in this.state) {
+            const key = st;
+            const value = this.state[st];
+            if(value !== '' && value !== false){
+                params[key] =value;
+            }
+        }
+        delete params.posts;
+        console.log(params);
+        const config = {
+            params: {
+                ...params
+            },
             withCredentials: true
         }
-        axios.get('http://localhost:5000/users/renter/search', data)
+        axios.get('http://localhost:5000/users/renter/search', config)
         .then(res => {this.setState({
             posts: res.data
         })

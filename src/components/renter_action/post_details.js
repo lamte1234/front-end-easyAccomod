@@ -98,7 +98,7 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
-                    <p>Status: {this.state.status ? <p className="text-success">Còn phòng</p>:<p className="text-danger">Đã Thuê</p>}</p>
+                    <div>Status: {this.state.status ? <p className="text-success">Còn phòng</p>:<p className="text-danger">Đã Thuê</p>}</div>
                     <p className="small">Views: {this.state.views}</p>
                     <p className="small">Likes: {this.state.likes}</p>
                     {this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
