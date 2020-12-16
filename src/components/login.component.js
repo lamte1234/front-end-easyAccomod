@@ -49,7 +49,8 @@ export default class Login extends Component {
         axios.post('http://localhost:5000/login', user,{withCredentials: true})
         .then(res => {
             console.log(res.data);
-            const username = localStorage.setItem('user', res.data.name);
+            localStorage.setItem('user', res.data.name);
+            localStorage.setItem('user_type', res.data.user_type);
             if(res.data.errors) {
                 this.setState({
                     errors: res.data.errors

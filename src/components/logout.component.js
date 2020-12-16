@@ -13,6 +13,8 @@ export default class LogOut extends Component {
                 })
             };
         });
+        localStorage.removeItem('user');
+        localStorage.removeItem('user_type');
     }
 
     render() {

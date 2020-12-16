@@ -16,6 +16,9 @@ export default function Nav() {
                             <li className="navbar-item">
                                 <Link to="/users/renter/wishlist" className="nav-link">Wish-list</Link>
                             </li>
+                            <li className="navbar-item">
+                                <Link to="/users/change-password" className="nav-link">Change Password</Link>
+                            </li>
                             <LogOut />
                             <li className="navbar-item">Welcome {username}</li>
                         </ul>

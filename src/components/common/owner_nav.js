@@ -26,6 +26,9 @@ export default function Nav() {
                     {/* fix later */}
                     <Link to="/users/owner" className="nav-link">Extend</Link>
                 </li>
+                <li className="navbar-item">
+                    <Link to="/users/change-password" className="nav-link">Change Password</Link>
+                </li>
                 <LogOut />
                 <li className="navbar-item">Welcome {username}</li>
             </ul>
