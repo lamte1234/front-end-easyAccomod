@@ -26,6 +26,7 @@ export default class PostDetail extends Component {
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
             image: [],
+            status: '',
             views: '',
             likes: '',
             addWishlistSuccess: false
@@ -50,6 +51,7 @@ export default class PostDetail extends Component {
             electricity: res.data.electricity, //vnd per kwh
             water: res.data.water, //vnd per m3
             image: res.data.image,
+            status: res.data.status,
             views: res.data.views,
             likes: res.data.likes
         }))
@@ -78,13 +80,10 @@ export default class PostDetail extends Component {
                     <br />
                     <h2>{this.state.title}</h2>
                     <br />
-                    <h3>Address</h3>
-                    <p>City: {this.state.city}</p>
-                    <p>District: {this.state.district}</p>
-                    <p>Ward: {this.state.ward}</p>
-                    <p>Street: {this.state.street}</p>
+                    <h4>Address</h4>
+                    <p>{this.state.street}, {this.state.ward}, {this.state.district}, {this.state.city}</p>
                     <br />
-                    <h3>Description</h3>
+                    <h4>Description</h4>
                     <ul>
                         <li>Room Type: {this.state.room_type}</li>
                         <li>Area: {this.state.area} M2</li>
@@ -99,10 +98,13 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
+                    <p>Status: {this.state.status ? <p className="text-success">Còn phòng</p>:<p className="text-danger">Đã Thuê</p>}</p>
                     <p className="small">Views: {this.state.views}</p>
                     <p className="small">Likes: {this.state.likes}</p>
                     {this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
-                    
+                    <h4>Contact Infomation</h4>
+                    <p>Name of owner: {localStorage.getItem('name')}</p>
+                    <p>Phone number: {localStorage.getItem('phone')}</p>
                 </div>
             </div>
         )

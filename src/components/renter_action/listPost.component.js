@@ -2,22 +2,28 @@ import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-const Post = props => (
+const Post = props => {
+    function click() {
+        localStorage.setItem('name', props.post.owner_id.name);
+        localStorage.setItem('phone', props.post.owner_id.phone)
+    }
+    return(
     <div className="row mt-3">
         <div className="col-sm-4">
-            <Link to={`/users/renter/post/${props.post._id}`}>
-                <img className="" src={'http://localhost:5000/' + props.post.image[1]} width="100%" alt="preview"></img>
+            <Link to={`/users/renter/post/${props.post._id}`} onClick={click}>
+                <img className="" src={'http://localhost:5000/' + props.post.image[0]} width="100%" alt="preview"></img>
             </Link>
             
         </div>
         <div className="col-sm-8">
             <Link to={`/users/renter/post/${props.post._id}`}><h3>{props.post.title}</h3></Link>
-            <p>Address: {props.post.city}</p>
+            <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
             <p>Rented rate: {props.post.rented_rate} vnd/month</p>
+            {props.post.status ? <p className="text-success">Còn phòng</p>:<p className="text-danger">Đã Thuê</p>}
         </div>
     </div>
-        
-)
+    )
+}
 
 export default class ListPost extends Component {
     constructor(props) {
