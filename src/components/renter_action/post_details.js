@@ -29,6 +29,8 @@ export default class PostDetail extends Component {
             status: '',
             views: '',
             likes: '',
+            owner_name: '',
+            owner_phone: '',
             addWishlistSuccess: false
         }
     }
@@ -53,7 +55,9 @@ export default class PostDetail extends Component {
             image: res.data.image,
             status: res.data.status,
             views: res.data.views,
-            likes: res.data.likes
+            likes: res.data.likes,
+            owner_name: res.data.owner_id.name,
+            owner_phone: res.data.owner_id.phone
         }))
         .catch(err => console.log(err));
     }
@@ -98,13 +102,13 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
-                    <div>Status: {this.state.status ? <p className="text-success">Còn phòng</p>:<p className="text-danger">Đã Thuê</p>}</div>
+                    <div>Status: {this.state.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}</div>
                     <p className="small">Views: {this.state.views}</p>
                     <p className="small">Likes: {this.state.likes}</p>
                     {this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
                     <h4>Contact Infomation</h4>
-                    <p>Name of owner: {localStorage.getItem('name')}</p>
-                    <p>Phone number: {localStorage.getItem('phone')}</p>
+                    <p>Name of owner: {this.state.owner_name}</p>
+                    <p>Phone number: {this.state.owner_phone}</p>
                 </div>
             </div>
         )

@@ -104,7 +104,7 @@ export default class Search extends Component {
             const key = st;
             const value = this.state[st];
             if(value !== '' && value !== false){
-                params[key] =value;
+                params[key] = value;
             }
         }
         delete params.posts;
