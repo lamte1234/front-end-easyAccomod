@@ -10,7 +10,7 @@ const Post = props => (
         <td>{props.post.street}</td>
         <td>{props.post.rented_rate} vnd</td>
         <td>{props.post.time} weeks</td>
-        <td><Link to={`/users/owner/edit/${props.post._id}`}><a>Edit</a></Link></td>
+        <td><Link to={`/users/owner/edit/${props.post._id}`}>Edit</Link></td>
     </tr>
 )
 

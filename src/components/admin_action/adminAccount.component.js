@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, {Component} from 'react';
+import axios from 'axios';
 
 import Nav from '../common/admin_nav';
 
@@ -10,7 +10,7 @@ const Account = props => (
         <td>{props.account.id_card_number}</td>
         <td>{props.account.phone}</td>
         <td>{props.account.address}</td>
-        <td><a href="" onClick={() => props.approve(props.account._id)}>Approved</a></td>
+        <td><a href="#" onClick={() => props.approve(props.account._id)}>Approved</a></td>
     </tr>
 )
 

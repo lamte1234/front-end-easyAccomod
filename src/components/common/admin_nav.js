@@ -16,7 +16,6 @@ export default function Nav() {
                     <Link to="/users/admin/posts" className="nav-link">Manage Posts</Link>
                 </li>
                 <li className="navbar-item">
-                    {/* fix later */}
                     <Link to="/users/admin/accounts" className="nav-link">Manage Accounts</Link>
                 </li>
                 <li className="navbar-item">
@@ -24,7 +23,6 @@ export default function Nav() {
                     <Link to="/users/admin" className="nav-link">Statistics</Link>
                 </li>
                 <li className="navbar-item">
-                    {/* fix later */}
                     <Link to="/users/admin/edit-auth" className="nav-link">Manage Edit</Link>
                 </li>
                 <LogOut />

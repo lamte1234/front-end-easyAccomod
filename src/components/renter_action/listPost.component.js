@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { render } from "react-dom";
 import { Link } from 'react-router-dom';
 
 const Post = props => (
     <div className="row mt-3">
         <div className="col-sm-4">
             <Link to={`/users/renter/post/${props.post._id}`}>
-                <img className="" src={'http://localhost:5000/' + props.post.image[1]} width="100%"></img>
+                <img className="" src={'http://localhost:5000/' + props.post.image[1]} width="100%" alt="preview"></img>
             </Link>
             
         </div>

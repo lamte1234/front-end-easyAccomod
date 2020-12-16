@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
-import axios from "axios";
 import { Link } from 'react-router-dom';
+import axios from "axios";
+
 
 import AdminNav from '../common/admin_nav'
 
@@ -10,9 +10,9 @@ const Post = props => (
             <td>{props.post.title}</td>
             <td>{props.post.city}</td>
             <td>{props.post.room_type}</td>
-            <td>{props.post.rented_rate}đ</td>
+            <td>{props.post.rented_rate} VND</td>
             <td>{props.post.time} weeks</td>
-            <Link to={`/users/admin/posts/${props.post._id}`}><a>Detail</a></Link>
+            <td><Link to={`/users/admin/posts/${props.post._id}`}>Detail</Link></td>
         </tr>
 
         

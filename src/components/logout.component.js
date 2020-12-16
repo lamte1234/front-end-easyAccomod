@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default class LogOut extends Component {
     logout(){
-        axios.post('http://localhost:5000/logout')
+        axios.post('http://localhost:5000/logout',{}, {withCredentials: true})
         .then(res => {
             console.log(res.data);
             if(res.data.errors) {
@@ -19,7 +19,7 @@ export default class LogOut extends Component {
         return(
             <li className="navbar-item">
                 {/* fix later */}
-                <Link to="/login" className="nav-link" onClick={this.logout()}>Logout</Link>
+                <Link to="/login" className="nav-link" onClick={this.logout}>Logout</Link>
             </li>
         )
     }
