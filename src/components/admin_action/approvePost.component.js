@@ -55,7 +55,7 @@ export default class PostDetail extends Component {
     }
     
     approvePost (id) {
-        axios.patch(`http://localhost:5000/users/admin/posts/${id}`, {withCredentials: true})
+        axios.patch(`http://localhost:5000/users/admin/posts/${id}`,{}, {withCredentials: true})
         .then(res => {
             console.log(res.data);  
             window.location = '/users/admin/posts';
