@@ -13,6 +13,9 @@ export default class LogOut extends Component {
                 })
             };
         });
+        if(localStorage.getItem('user_type') === 'renter'){
+            localStorage.removeItem('wishlist');
+        }
         localStorage.removeItem('user');
         localStorage.removeItem('user_type');
     }
@@ -20,7 +23,6 @@ export default class LogOut extends Component {
     render() {
         return(
             <li className="navbar-item">
-                {/* fix later */}
                 <Link to="/login" className="nav-link" onClick={this.logout}>Logout</Link>
             </li>
         )

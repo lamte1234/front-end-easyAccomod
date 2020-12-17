@@ -37,28 +37,38 @@ export default class PostDetail extends Component {
 
     componentDidMount() {
         axios.get('http://localhost:5000/users/renter/post/'+this.props.match.params.id,{withCredentials: true})
-        .then(res => this.setState({
-            title: res.data.title,
-            city: res.data.city,
-            district: res.data.district,
-            ward: res.data.ward,
-            street: res.data.street,
-            room_type: res.data.room_type,
-            rented_rate: res.data.rented_rate,
-            area: res.data.area,
-            bathroom: res.data.bathroom,
-            kitchen: res.data.kitchen,
-            air_con: res.data.air_con,
-            water_heater: res.data.water_heater,
-            electricity: res.data.electricity, //vnd per kwh
-            water: res.data.water, //vnd per m3
-            image: res.data.image,
-            status: res.data.status,
-            views: res.data.views,
-            likes: res.data.likes,
-            owner_name: res.data.owner_id.name,
-            owner_phone: res.data.owner_id.phone
-        }))
+        .then(res => {
+            this.setState({
+                title: res.data.title,
+                city: res.data.city,
+                district: res.data.district,
+                ward: res.data.ward,
+                street: res.data.street,
+                room_type: res.data.room_type,
+                rented_rate: res.data.rented_rate,
+                area: res.data.area,
+                bathroom: res.data.bathroom,
+                kitchen: res.data.kitchen,
+                air_con: res.data.air_con,
+                water_heater: res.data.water_heater,
+                electricity: res.data.electricity, //vnd per kwh
+                water: res.data.water, //vnd per m3
+                image: res.data.image,
+                status: res.data.status,
+                views: res.data.views,
+                likes: res.data.likes,
+                owner_name: res.data.owner_id.name,
+                owner_phone: res.data.owner_id.phone
+            });
+            const wishlist = localStorage.getItem('wishlist').split(',');
+            wishlist.forEach(post_id => {
+                if(post_id === res.data._id) {
+                    this.setState({
+                        addWishlistSuccess: true
+                    });
+                }
+            }) 
+        })
         .catch(err => console.log(err));
     }
 
@@ -105,7 +115,7 @@ export default class PostDetail extends Component {
                     <div>Status: {this.state.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}</div>
                     <p className="small">Views: {this.state.views}</p>
                     <p className="small">Likes: {this.state.likes}</p>
-                    {this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
+                    {!this.state.addWishlistSuccess ? <button className="btn btn-danger" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
                     <h4>Contact Infomation</h4>
                     <p>Name of owner: {this.state.owner_name}</p>
                     <p>Phone number: {this.state.owner_phone}</p>

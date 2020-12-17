@@ -16,6 +16,7 @@ import AdminWS from './components/workspace/admin.component';
 
 import Search from './components/renter_action/search.component';
 import PostDetail from './components/renter_action/post_details';
+import Wishlist from './components/renter_action/wislist.component';
 
 import Post from './components/owner_action/post.component';
 import OwnerPost from './components/owner_action/ownerPost.component';
@@ -41,6 +42,7 @@ function App() {
       <Route path='/users/renter/' exact component={RenterWS}></Route>
       <Route path='/users/renter/search/' exact component={Search}></Route>
       <Route path='/users/renter/post/:id' exact component={PostDetail}></Route>
+      <Route path='/users/renter/wishlist' exact component={Wishlist}></Route>
       {/* ---------------------------OWNER-------------------------------- */}
       <Route path='/users/owner/' exact component={OwnerWS}></Route>
       <Route path='/users/owner/post/' exact component={Post}></Route>

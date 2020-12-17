@@ -32,8 +32,6 @@ export default class ListPost extends Component {
     componentDidMount() {
         axios.get('http://localhost:5000/users/renter/explore', {withCredentials: true})
         .then(res => {
-            console.log(res.data);
-            console.log("success");
             this.setState({
                 posts: res.data
             })

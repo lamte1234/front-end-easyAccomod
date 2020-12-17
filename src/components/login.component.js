@@ -51,6 +51,9 @@ export default class Login extends Component {
             console.log(res.data);
             localStorage.setItem('user', res.data.name);
             localStorage.setItem('user_type', res.data.user_type);
+            if(res.data.wishlist) {
+                localStorage.setItem('wishlist', res.data.wishlist);
+            }
             if(res.data.errors) {
                 this.setState({
                     errors: res.data.errors
