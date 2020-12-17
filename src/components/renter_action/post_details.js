@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import Nav from '../common/renter_nav';
+import ReviewForm from './review_form.component';
+
+const Review = props => (
+    <div>
+        <h5 className="renter_name">{props.review.renter_id.name}</h5>
+        <p className="star">{props.review.star}</p>
+        <p className="renter_review">{props.review.review}</p>
+    </div>
+);
 
 export default class PostDetail extends Component {
 
@@ -11,6 +20,7 @@ export default class PostDetail extends Component {
         this.addToWishlist = this.addToWishlist.bind(this);
 
         this.state = {
+            id: '',
             title: '',
             city: '',
             district: '',
@@ -31,7 +41,8 @@ export default class PostDetail extends Component {
             likes: '',
             owner_name: '',
             owner_phone: '',
-            addWishlistSuccess: false
+            addWishlistSuccess: false,
+            reviews: []
         }
     }
 
@@ -39,6 +50,7 @@ export default class PostDetail extends Component {
         axios.get('http://localhost:5000/users/renter/post/'+this.props.match.params.id,{withCredentials: true})
         .then(res => {
             this.setState({
+                id: res.data._id,
                 title: res.data.title,
                 city: res.data.city,
                 district: res.data.district,
@@ -70,6 +82,12 @@ export default class PostDetail extends Component {
             }) 
         })
         .catch(err => console.log(err));
+
+        axios.get('http://localhost:5000/users/renter/review/'+this.props.match.params.id,{withCredentials: true})
+        .then(res => this.setState({
+            reviews: res.data
+        }))
+        .catch(err => console.log(err));
     }
 
 
@@ -84,6 +102,12 @@ export default class PostDetail extends Component {
             console.log(this.state.addWishlistSuccess);
         }) //handle notification
         .catch(err => console.log(err));
+    }
+
+    showReview() {
+        return this.state.reviews.map((review, index) => {
+            return <Review review={review} key={index}></Review>
+        })
     }
 
     render() {
@@ -119,6 +143,11 @@ export default class PostDetail extends Component {
                     <h4>Contact Infomation</h4>
                     <p>Name of owner: {this.state.owner_name}</p>
                     <p>Phone number: {this.state.owner_phone}</p>
+                    <br />
+                    <h4>Review</h4>
+                    <ReviewForm post_id={this.state.id}/>
+                    <br />
+                    {this.showReview()}
                 </div>
             </div>
         )
