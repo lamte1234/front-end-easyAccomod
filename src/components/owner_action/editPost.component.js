@@ -1,12 +1,29 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import Nav from '../common/owner_nav'
+import Nav from '../common/owner_nav';
 
-export default class EditPost extends Component {
-
+export default class Post extends Component {
     constructor(props) {
         super(props);
+
+        this.onChangeTitle = this.onChangeTitle.bind(this);
+        this.onChangeCity = this.onChangeCity.bind(this);
+        this.onChangeDistrict = this.onChangeDistrict.bind(this);
+        this.onChangeWard = this.onChangeWard.bind(this);
+        this.onChangeStreet = this.onChangeStreet.bind(this);
+        this.onChangeRoomType = this.onChangeRoomType.bind(this);
+        this.onChangeRentedRate = this.onChangeRentedRate.bind(this);
+        this.onChangeArea = this.onChangeArea.bind(this);
+        this.onChangeBathroom = this.onChangeBathroom.bind(this);
+        this.onChangeKitchen = this.onChangeKitchen.bind(this);
+        this.onChangeAirCon = this.onChangeAirCon.bind(this);
+        this.onChangeWaterHeater = this.onChangeWaterHeater.bind(this);
+        this.onChangeElectricity = this.onChangeElectricity.bind(this);
+        this.onChangeWater = this.onChangeWater.bind(this);
+        //this.onChangeImage = this.onChangeImage.bind(this);
+        this.onChangeTime = this.onChangeTime.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             title: '',
@@ -30,7 +47,6 @@ export default class EditPost extends Component {
 
     };
 
-
     componentDidMount() {
         axios.get('http://localhost:5000/users/owner/edit/'+this.props.match.params.id, {withCredentials: true})
         .then(res => this.setState({
@@ -49,11 +65,146 @@ export default class EditPost extends Component {
             water_heater: res.data.water_heater,
             electricity: res.data.electricity, 
             water: res.data.water, 
-            image: res.data.image
+            time: res.data.time,
+            //image: res.data.image
         }))
 
         .catch(err => console.log(err));
         
+    }
+
+    onChangeTitle(e) {
+        this.setState({
+            title: e.target.value
+        })
+    };
+
+    onChangeCity(e) {
+        this.setState({
+            city: e.target.value
+        })
+    };
+
+    onChangeDistrict(e) {
+        this.setState({
+            district: e.target.value
+        })
+    };
+
+    onChangeWard(e) {
+        this.setState({
+            ward: e.target.value
+        })
+    };
+
+    onChangeStreet(e) {
+        this.setState({
+            street: e.target.value
+        })
+    };
+
+    onChangeRoomType(e) {
+        this.setState({
+            room_type: e.target.value
+        })
+    };
+
+    onChangeRentedRate(e) {
+        this.setState({
+            rented_rate: e.target.value
+        })
+    };
+
+    onChangeArea(e) {
+        this.setState({
+            area: e.target.value
+        })
+    };
+
+    onChangeBathroom(e) {
+        this.setState({
+            bathroom: !this.state.bathroom
+        })
+    };
+
+    onChangeKitchen(e) {
+        this.setState({
+            kitchen: !this.state.kitchen
+        })
+    };
+
+    onChangeAirCon(e) {
+        this.setState({
+            air_con: !this.state.air_con
+        })
+    };
+
+    onChangeWaterHeater(e) {
+        this.setState({
+            water_heater: !this.state.water_heater
+        })
+    };
+
+    onChangeElectricity(e) {
+        this.setState({
+            electricity: e.target.value
+        })
+    };
+
+    onChangeWater(e) {
+        this.setState({
+            water: e.target.value
+        })
+    };
+
+    onChangeImage(e) {
+        console.log(e.target.files);
+        let files = e.target.files;
+        let img = []
+        for(const file in files){
+            img.push(files[file]);
+        };
+        this.setState({
+            image: img
+        });
+    };
+
+
+    onChangeTime(e) {
+        this.setState({
+            time: e.target.value
+        })
+    };
+
+    onSubmit(e) {
+        e.preventDefault();
+        let data = new FormData();
+        data.set("title",this.state.title);
+        data.set("city",this.state.city);
+        data.set("district",this.state.district);
+        data.set("ward",this.state.ward);
+        data.set("street",this.state.street);
+        data.set("room_type",this.state.room_type);
+        data.set("rented_rate",this.state.rented_rate);
+        data.set("area",this.state.area);
+        data.set("bathroom",this.state.bathroom);
+        data.set("kitchen",this.state.kitchen);
+        data.set("air_con",this.state.air_con);
+        data.set("water_heater",this.state.water_heater);
+        data.set("electricity",this.state.electricity);
+        data.set("water",this.state.water);
+        data.set("time",this.state.time);
+        // this.state.image.forEach(img => {
+        //     data.append('image', img);
+        // })
+
+        axios.put(`http://localhost:5000/users/owner/edit/${this.state.id}`, data, {withCredentials: true})
+            .then(res => 
+                console.log(res.data)
+            )
+            .catch(err =>
+                console.log(err)
+            )
     }
 
 
@@ -67,7 +218,7 @@ export default class EditPost extends Component {
                         this.state.errors.map((err, index) =>
                             <div className='alert alert-danger' key={index}>{err}</div>)
                     }
-                    <form action="" method="POST" encType="multipart/form-data" onSubmit={this.onSubmit}>
+                    <form action="" method="PUT" encType="multipart/form-data" onSubmit={this.onSubmit}>
                         <div className="form-group"><label htmlFor="Title">Title</label>
                             <input className="form-control" id="title" type="text" name="title" 
                             value={this.state.title} onChange={this.onChangeTitle} /></div>
@@ -115,7 +266,7 @@ export default class EditPost extends Component {
                             value={this.state.time} onChange={this.onChangeTime} /></div>
                         <div className="form-group"><label htmlFor="image">Image</label>
                             <input className="" id="image" type="file" name="image" accept="image/*" multiple 
-                            onChange={this.onChangeImage} /></div>
+                            /></div>
                         <button className="btn btn-primary">Commit</button>
                     </form>
                 </div>
