@@ -21,11 +21,11 @@ export default class Post extends Component {
         this.onChangeWaterHeater = this.onChangeWaterHeater.bind(this);
         this.onChangeElectricity = this.onChangeElectricity.bind(this);
         this.onChangeWater = this.onChangeWater.bind(this);
-        //this.onChangeImage = this.onChangeImage.bind(this);
-        this.onChangeTime = this.onChangeTime.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            id: '',
             title: '',
             city: '',
             district: '',
@@ -34,14 +34,13 @@ export default class Post extends Component {
             room_type: '',
             rented_rate: '', //vnd per month
             area: '',
-            bathroom: false,
-            kitchen: false,
-            air_con: false,
-            water_heater: false,
+            bathroom: '',
+            kitchen: '',
+            air_con: '',
+            water_heater: '',
             electricity: '', //vnd per kwh
-            water: '', //vnd per m3
-            image: [],
-            time: '',
+            water: '',
+            status: '', //vnd per m3
             errors: []
         }
 
@@ -64,11 +63,9 @@ export default class Post extends Component {
             air_con: res.data.air_con,
             water_heater: res.data.water_heater,
             electricity: res.data.electricity, 
-            water: res.data.water, 
-            time: res.data.time,
-            //image: res.data.image
+            water: res.data.water,
+            status: res.data.status
         }))
-
         .catch(err => console.log(err));
         
     }
@@ -157,56 +154,21 @@ export default class Post extends Component {
         })
     };
 
-    onChangeImage(e) {
-        console.log(e.target.files);
-        let files = e.target.files;
-        let img = []
-        for(const file in files){
-            img.push(files[file]);
-        };
+    onChangeStatus(e) {
         this.setState({
-            image: img
-        });
-    };
-
-
-    onChangeTime(e) {
-        this.setState({
-            time: e.target.value
+            status : !this.state.status
         })
     };
 
     onSubmit(e) {
         e.preventDefault();
-        let data = new FormData();
-        data.set("title",this.state.title);
-        data.set("city",this.state.city);
-        data.set("district",this.state.district);
-        data.set("ward",this.state.ward);
-        data.set("street",this.state.street);
-        data.set("room_type",this.state.room_type);
-        data.set("rented_rate",this.state.rented_rate);
-        data.set("area",this.state.area);
-        data.set("bathroom",this.state.bathroom);
-        data.set("kitchen",this.state.kitchen);
-        data.set("air_con",this.state.air_con);
-        data.set("water_heater",this.state.water_heater);
-        data.set("electricity",this.state.electricity);
-        data.set("water",this.state.water);
-        data.set("time",this.state.time);
-        // this.state.image.forEach(img => {
-        //     data.append('image', img);
-        // })
-
+        const data = {
+            ...this.state
+        }
         axios.put(`http://localhost:5000/users/owner/edit/${this.state.id}`, data, {withCredentials: true})
-            .then(res => 
-                console.log(res.data)
-            )
-            .catch(err =>
-                console.log(err)
-            )
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
     }
-
 
     render() {
         return (
@@ -243,30 +205,57 @@ export default class Post extends Component {
                         <div className="form-group"><label htmlFor="area">Area</label>
                             <input className="form-control" id="area" type="number" name="area" 
                             value={this.state.area} onChange={this.onChangeArea} /></div>
+                        {this.state.bathroom === true ?
+                        <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
+                            <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
+                            value={this.state.bathroom} onChange={this.onChangeBathroom} defaultChecked /></div>
+                            :
                         <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
                             <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
                             value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
+                        }
+                        {this.state.kitchen === true ?
+                        <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
+                            <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
+                            value={this.state.kitchen} onChange={this.onChangeKitchen} defaultChecked /></div>
+                            :
                         <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
                             <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
                             value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
+                        }
+                        {this.state.air_con === true ?
+                        <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
+                            <input className="form-control" id="air_con" type="checkbox" name="air_con" 
+                            value={this.state.air_con} onChange={this.onChangeAirCon} defaultChecked /></div>
+                            :
                         <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
                             <input className="form-control" id="air_con" type="checkbox" name="air_con" 
                             value={this.state.air_con} onChange={this.onChangeAirCon} /></div>
+                        }
+                        {this.state.water_heater === true ?
+                        <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
+                            <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
+                            value={this.state.water_heater} onChange={this.onChangeWaterHeater} defaultChecked /></div>
+                            :
                         <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
                             <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
                             value={this.state.water_heater} onChange={this.onChangeWaterHeater} /></div>
+                        }
                         <div className="form-group"><label htmlFor="electricity">Electricity</label>
                             <input className="form-control" id="electricity" type="number" name="street" 
                             value={this.state.electricity} onChange={this.onChangeElectricity} /></div>
                         <div className="form-group"><label htmlFor="water">Water</label>
                             <input className="form-control" id="water" type="number" name="water" 
                             value={this.state.water} onChange={this.onChangeWater} /></div>
-                        <div className="form-group"><label htmlFor="time">Time</label>
-                            <input className="form-control" id="time" type="number" name="time" 
-                            value={this.state.time} onChange={this.onChangeTime} /></div>
-                        <div className="form-group"><label htmlFor="image">Image</label>
-                            <input className="" id="image" type="file" name="image" accept="image/*" multiple 
-                            /></div>
+                        {this.state.status === true ?
+                        <div className="form-group"><label htmlFor="status">Room Status</label>
+                            <input className="form-control" id="status" type="checkbox" name="status" 
+                            value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
+                            :
+                            <div className="form-group"><label htmlFor="status">Room Status</label>
+                            <input className="form-control" id="status" type="checkbox" name="status" 
+                            value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
+                        }
                         <button className="btn btn-primary">Commit</button>
                     </form>
                 </div>

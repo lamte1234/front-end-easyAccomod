@@ -62,7 +62,7 @@ export default class AllPost extends Component {
         return(
             <div>
                 <Nav />
-                <div classname="container">
+                <div className="container">
                     <br />
                     <table className="table table-hover">
                         <thead className="thead-light">
