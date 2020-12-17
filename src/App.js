@@ -21,6 +21,7 @@ import Wishlist from './components/renter_action/wislist.component';
 import Post from './components/owner_action/post.component';
 import OwnerPost from './components/owner_action/ownerPost.component';
 import EditPost from './components/owner_action/editPost.component';
+import AllPost from './components/owner_action/allPost.component';
 
 import AdminAcc from './components/admin_action/adminAccount.component';
 import AdminPost from './components/admin_action/adminPost.component';
@@ -48,6 +49,7 @@ function App() {
       <Route path='/users/owner/post/' exact component={Post}></Route>
       <Route path='/users/owner/edit' exact component={OwnerPost}></Route>
       <Route path='/users/owner/edit/:id' exact component={EditPost}></Route>
+      <Route path='/users/owner/all-post' exact component={AllPost}></Route>
       {/* ----------------------------ADMIN--------------------------------------- */}
       <Route path='/users/admin/' exact component={AdminWS}></Route>
       <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
