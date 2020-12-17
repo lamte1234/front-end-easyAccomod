@@ -21,7 +21,7 @@ export default class Post extends Component {
         this.onChangeWaterHeater = this.onChangeWaterHeater.bind(this);
         this.onChangeElectricity = this.onChangeElectricity.bind(this);
         this.onChangeWater = this.onChangeWater.bind(this);
-        this.onChangeImage = this.onChangeImage.bind(this);
+        //this.onChangeImage = this.onChangeImage.bind(this);
         this.onChangeTime = this.onChangeTime.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -66,7 +66,7 @@ export default class Post extends Component {
             electricity: res.data.electricity, 
             water: res.data.water, 
             time: res.data.time,
-            image: res.data.image
+            //image: res.data.image
         }))
 
         .catch(err => console.log(err));
@@ -194,9 +194,9 @@ export default class Post extends Component {
         data.set("electricity",this.state.electricity);
         data.set("water",this.state.water);
         data.set("time",this.state.time);
-        this.state.image.forEach(img => {
-            data.append('image', img);
-        })
+        // this.state.image.forEach(img => {
+        //     data.append('image', img);
+        // })
 
         axios.put(`http://localhost:5000/users/owner/edit/${this.state.id}`, data, {withCredentials: true})
             .then(res => 
