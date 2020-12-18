@@ -4,10 +4,32 @@ import axios from 'axios';
 import Nav from '../common/renter_nav';
 import ReviewForm from './review_form.component';
 
+
+const Star = (star) => {
+    let arr = [];
+    for(let i = 0; i < 5; i++){
+        if(i < star) {
+            arr[i] = true; 
+        }
+        else {
+            arr[i] = false;
+        }
+    }
+    return (
+        arr.map((elem, index) => {
+            if(elem === true) {return <span key={index}>X </span>} // replace with bright star image
+            else {return <span key={index}>O </span>}
+        })
+    )
+}
+
 const Review = props => (
+
     <div>
         <h5 className="renter_name">{props.review.renter_id.name}</h5>
-        <p className="star">{props.review.star}</p>
+        <div className="star">
+            {Star(props.review.star)}
+        </div>
         <p className="renter_review">{props.review.review}</p>
     </div>
 );

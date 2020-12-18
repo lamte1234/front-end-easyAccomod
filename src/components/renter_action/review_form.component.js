@@ -12,21 +12,35 @@ export default class ReviewForm extends Component {
 
         this.state = {
             star: 0,
-            review: '', 
+            review: '',
+            star_checked: [false, false, false, false, false],
             errors: []
         }
     }
 
     onChangeStar(e) {
-        this.setState({
-            star: e.target.value
-        })
+        this.setState(state => {
+            const star = parseInt(e.target.value);
+            const star_checked = state.star_checked.map((elem, index) => {
+                if(index <= (star - 1)) {
+                    elem = true;
+                }
+                else {
+                    elem = false;
+                }
+                return elem;
+            });
+            return {
+                star: star,
+                star_checked: star_checked
+            }  
+        });
     }
 
     onChangeReview(e) {
         this.setState({
             review: e.target.value
-        })
+        });
     }
 
     onSubmit(e) {
@@ -57,11 +71,13 @@ export default class ReviewForm extends Component {
                         <div className='alert alert-danger' key={index}>{err}</div>)
                 }
                 <form method="POST" onSubmit={this.onSubmit}>
-                    {/* <div className="form-group">
-                        <label htmlFor="review">Rate</label>
-                        <input className="form-control" id="star" type="text" 
-                        value={this.state.star} name="review" onChange={this.onChangeReview} />
-                    </div> */}
+                    <div className="form-group rating">
+                            <span><input type="checkbox" name="star1" id="star1" value="1" checked={this.state.star_checked[0]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" name="star2" id="star2" value="2" checked={this.state.star_checked[1]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" name="star3" id="star3" value="3" checked={this.state.star_checked[2]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" name="star4" id="star4" value="4" checked={this.state.star_checked[3]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" name="star5" id="star5" value="5" checked={this.state.star_checked[4]} onChange={this.onChangeStar}></input></span>
+                    </div>
                     <div className="form-group">
                         <label htmlFor="review">Review</label>
                         <input className="form-control" id="review" type="text" 
