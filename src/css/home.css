@@ -1,0 +1,39 @@
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+body,html {
+    height: 100%;
+}
+.home-layout {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100%; 
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+h1.slogan {
+    position: relative;
+    font-size: 60px;
+    text-align: center;
+    top: 30%;
+}
+p.content {
+    position: relative;
+    font-size: 40px;
+    text-align: center;
+    top: 30%;
+}

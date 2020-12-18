@@ -1,0 +1,26 @@
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+body,html {
+    height: 100%;
+}
+.login-layout {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100%; 
+}
+
+.login-container {
+    top: 10%;
+    border: 2px solid #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.login-block {
+    margin: 10px auto 20px auto;
+}
+
