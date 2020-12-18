@@ -22,12 +22,15 @@ import Post from './components/owner_action/post.component';
 import OwnerPost from './components/owner_action/ownerPost.component';
 import EditPost from './components/owner_action/editPost.component';
 import AllPost from './components/owner_action/allPost.component';
+import Extend from './components/owner_action/extend.component';
+import ExtendAction from './components/owner_action/extendAction.component';
 
 import AdminAcc from './components/admin_action/adminAccount.component';
 import AdminPost from './components/admin_action/adminPost.component';
 import AdminPostDetail from './components/admin_action/approvePost.component';
 import EditAcc from './components/admin_action/approveEditAcc.component';
 import AdminReport from './components/admin_action/adminReport.component';
+
 
 function App() {
   return (
@@ -51,6 +54,8 @@ function App() {
       <Route path='/users/owner/edit' exact component={OwnerPost}></Route>
       <Route path='/users/owner/edit/:id' exact component={EditPost}></Route>
       <Route path='/users/owner/all-post' exact component={AllPost}></Route>
+      <Route path="/users/owner/extend/" exact component={Extend}></Route>
+      <Route path="/users/owner/extend/:id" exact component={ExtendAction}></Route>
       {/* ----------------------------ADMIN--------------------------------------- */}
       <Route path='/users/admin/' exact component={AdminWS}></Route>
       <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>

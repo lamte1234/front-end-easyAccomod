@@ -26,8 +26,7 @@ export default function Nav() {
                     <Link to="/users/owner" className="nav-link">Statistics</Link> 
                 </li>
                 <li className="navbar-item">
-                    {/* fix later */}
-                    <Link to="/users/owner" className="nav-link">Extend</Link>
+                    <Link to="/users/owner/extend" className="nav-link">Extend</Link>
                 </li>
                 <li className="navbar-item">
                     <Link to="/users/change-password" className="nav-link">Change Password</Link>
