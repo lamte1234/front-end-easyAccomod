@@ -37,6 +37,7 @@ export default class ExtendAction extends Component {
         .catch(err => console.log(err))
     }
 
+
     render() {
         return(
             <div>
@@ -53,6 +54,20 @@ export default class ExtendAction extends Component {
                                 <label htmlFor="time">Time Extend</label>
                                 <input className="form-control" id="time" type="number" name="time" 
                                 value={this.state.time} onChange={this.onChangeTime} /></div>
+                                {
+                                    this.state.time === "1" ?
+                                    <p>Pay Fee: 100,000 VND</p>
+                                    :
+                                    this.state.time === "2" ?
+                                    <p>Pay Fee: 200,000 VND</p>
+                                    :
+                                    this.state.time === "3" ?
+                                    <p>Pay Fee: 300,000 VND</p>
+                                    :
+                                    this.state.time === "4" ?
+                                    <p>Pay Fee: 400,000 VND</p>
+                                    : <p></p>
+                                }
                             <button className="btn btn-primary">Extend</button>
                         </form>
                     </div>
