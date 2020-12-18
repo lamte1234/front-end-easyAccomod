@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Login from './components/login.component';
-import Navbar from './components/navbar.component';
+import Home from './components/home.component';
 import ChangePass from './components/change_password.component';
 
 import Signup from './components/signup.component';
@@ -33,7 +33,7 @@ function App() {
   return (
     <Router>
       {/* --------------------------COMMON--------------------------------- */}
-      <Route path="/" exact component={Navbar}></Route>
+      <Route path="/" exact component={Home}></Route>
       <Route path='/login/' exact component={Login}></Route>
       <Route path='/users/change-password' exact component={ChangePass}></Route>
       {/* ---------------------------SIGNUP--------------------------------- */}
