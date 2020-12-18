@@ -25,8 +25,9 @@ import AllPost from './components/owner_action/allPost.component';
 
 import AdminAcc from './components/admin_action/adminAccount.component';
 import AdminPost from './components/admin_action/adminPost.component';
-import ApprovePost from './components/admin_action/approvePost.component';
+import AdminPostDetail from './components/admin_action/approvePost.component';
 import EditAcc from './components/admin_action/approveEditAcc.component';
+import AdminReport from './components/admin_action/adminReport.component';
 
 function App() {
   return (
@@ -54,7 +55,8 @@ function App() {
       <Route path='/users/admin/' exact component={AdminWS}></Route>
       <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
       <Route path='/users/admin/posts/' exact component={AdminPost}></Route>
-      <Route path='/users/admin/posts/:id' exact component={ApprovePost}></Route>
+      <Route path='/users/admin/report/' exact component={AdminReport}></Route>
+      <Route path='/users/admin/posts/:id' exact component={AdminPostDetail}></Route>
       <Route path='/users/admin/edit-auth/' exact component={EditAcc}></Route>
     </Router>
   );

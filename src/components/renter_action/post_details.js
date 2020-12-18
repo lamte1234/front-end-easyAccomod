@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Nav from '../common/renter_nav';
 import ReviewForm from './review_form.component';
+import ReportForm from './report_form.component';
 
 
 const Star = (star) => {
@@ -168,6 +169,9 @@ export default class PostDetail extends Component {
                     <br />
                     <h4>Review</h4>
                     <ReviewForm post_id={this.state.id}/>
+                    <br />
+                    <h4>Report</h4>
+                    <ReportForm post_id={this.state.id}></ReportForm>
                     <br />
                     {this.showReview()}
                 </div>

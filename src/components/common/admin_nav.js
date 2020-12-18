@@ -22,6 +22,9 @@ export default function Nav() {
                     <Link to="/users/admin/edit-auth" className="nav-link">Edit Authenticate</Link>
                 </li>
                 <li className="navbar-item">
+                    <Link to="/users/admin/report" className="nav-link">Reports</Link>
+                </li>
+                <li className="navbar-item">
                     {/* fix later */}
                     <Link to="/users/admin" className="nav-link">Statistics</Link>
                 </li>

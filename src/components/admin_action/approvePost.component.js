@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import AdminNav from '../common/admin_nav'
+import Nav from '../common/admin_nav'
 
-export default class PostDetail extends Component {
+export default class AdminPostDetail extends Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,8 @@ export default class PostDetail extends Component {
             water_heater: false,
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
-            image: []
+            image: [],
+            is_approved: ''
         }
     }
 
@@ -48,7 +49,8 @@ export default class PostDetail extends Component {
             water_heater: res.data.water_heater,
             electricity: res.data.electricity, //vnd per kwh
             water: res.data.water, //vnd per m3
-            image: res.data.image
+            image: res.data.image,
+            is_approved: res.data.is_approved
         }))
         .catch(err => console.log(err));
         
@@ -70,7 +72,7 @@ export default class PostDetail extends Component {
     render() {
         return(
             <div>
-                <AdminNav />
+                <Nav />
                 <div className='container'>
                     <br />
                     <h2>{this.state.title}</h2>
@@ -96,7 +98,11 @@ export default class PostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
-                    <button className="btn1" onClick={() => this.approvePost(this.state.id)}>Approve</button>
+                    {!this.state.is_approved ?
+                    <button className="btn btn-primary" onClick={() => this.approvePost(this.state.id)}>Approve</button>
+                    :
+                    <div></div>
+                    }          
                 </div>
             </div>
         )
