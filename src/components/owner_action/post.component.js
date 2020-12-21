@@ -172,7 +172,10 @@ export default class Post extends Component {
         })
 
         axios.post('http://localhost:5000/users/owner/post', data, {withCredentials: true}).then(res => {
-            console.log(res.data);
+            if (res.status == 201){
+                alert ("Thành công! Bài đăng của bạn đang chờ phê duyệt.")
+                window.location.href = ('http://localhost:3000/users/owner/all-post')
+            }
             if (res.data.errors) {
                 this.setState({
                     errors: res.data.errors
@@ -180,6 +183,7 @@ export default class Post extends Component {
             };
 
         });
+        
     }
 
     render() {
@@ -237,7 +241,21 @@ export default class Post extends Component {
                             value={this.state.water} onChange={this.onChangeWater} /></div>
                         <div className="form-group"><label htmlFor="time">Time</label>
                             <input className="form-control" id="time" type="number" name="time" 
-                            value={this.state.time} onChange={this.onChangeTime} /></div>
+                            value={this.state.time} onChange={this.onChangeTime} onKeyUp={this.onChangeTime}/></div>
+                            {
+                                this.state.time === "1" ?
+                                <p>Pay Fee: 100,000 VND</p>
+                                :
+                                this.state.time === "2" ?
+                                <p>Pay Fee: 200,000 VND</p>
+                                :
+                                this.state.time === "3" ?
+                                <p>Pay Fee: 300,000 VND</p>
+                                :
+                                this.state.time === "4" ?
+                                <p>Pay Fee: 400,000 VND</p>
+                                : <p></p>
+                            }
                         <div className="form-group"><label htmlFor="image">Image</label>
                             <input className="" id="image" type="file" name="image" accept="image/*" multiple 
                             onChange={this.onChangeImage} /></div>

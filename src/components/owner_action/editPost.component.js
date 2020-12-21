@@ -166,7 +166,12 @@ export default class Post extends Component {
             ...this.state
         }
         axios.put(`http://localhost:5000/users/owner/edit/${this.state.id}`, data, {withCredentials: true})
-        .then(res => console.log(res.data))
+        .then(res =>{
+            if (res.status == 200){
+                alert ("Bài đăng đã được cập nhật. Hãy chờ phê duyệt.")
+                window.location.href = ('http://localhost:3000/users/owner/edit')
+            }
+        })
         .catch(err => console.log(err))
     }
 
