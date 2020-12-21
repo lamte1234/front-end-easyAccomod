@@ -172,8 +172,8 @@ export default class Post extends Component {
         })
 
         axios.post('http://localhost:5000/users/owner/post', data, {withCredentials: true}).then(res => {
-            if (res.status == 201){
-                alert ("Thành công! Bài đăng của bạn đang chờ phê duyệt.")
+            if (res.status === 201){
+                alert ("Successful! Please wait for approval.")
                 window.location.href = ('http://localhost:3000/users/owner/all-post')
             }
             if (res.data.errors) {

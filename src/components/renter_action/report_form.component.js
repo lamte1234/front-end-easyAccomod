@@ -27,6 +27,9 @@ export default class ReportForm extends Component {
 
         axios.post(`http://localhost:5000/users/renter/report/${this.props.post_id}`, data, {withCredentials: true})
         .then(res => {
+            if (res.status === 201){
+                alert ("Your report has been recorded. Thanks for helping us!")
+            }
             if(res.data.errors) {
                 this.setState({
                     errors: res.data.errors

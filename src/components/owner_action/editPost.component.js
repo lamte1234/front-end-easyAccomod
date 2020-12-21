@@ -165,11 +165,18 @@ export default class Post extends Component {
         const data = {
             ...this.state
         }
+        delete data.errors;
+
         axios.put(`http://localhost:5000/users/owner/edit/${this.state.id}`, data, {withCredentials: true})
         .then(res =>{
-            if (res.status == 200){
-                alert ("Bài đăng đã được cập nhật. Hãy chờ phê duyệt.")
-                window.location.href = ('http://localhost:3000/users/owner/edit')
+            if (res.data.errors) {
+                this.setState({
+                    errors: res.data.errors
+                })
+            }
+            if (res.status === 200 && !res.data.errors){
+                alert ("Post has been updated. Please wait for approval.")
+                window.location.href = ('http://localhost:3000/users/owner/all-post')
             }
         })
         .catch(err => console.log(err))

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Navbar from '../components/navbar.component';
 import {Link} from 'react-router-dom';
 import '../css/signup.css';
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from '../components/navbar.component';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../css/login.css';

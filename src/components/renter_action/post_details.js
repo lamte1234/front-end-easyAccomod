@@ -153,12 +153,14 @@ export default class PostDetail extends Component {
                         </div>
                         <div className="col-sm-4">
                             <h2>{this.state.title}</h2>
-                            <p><span className="rented-rate">{this.state.rented_rate} vnd</span>/month</p>
+                            <p><span className="rented-rate">{this.state.rented_rate} VND</span>/Month</p>
                             {this.state.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
-                            {!this.state.addWishlistSuccess ? <button className="btn btn-info" onClick={this.addToWishlist}>Add to Wish-list</button> : <p className="text-success">In Wishlist</p>}
+                            {!this.state.addWishlistSuccess ? 
+                            <button className="btn btn-info" onClick={this.addToWishlist}>Add to Wish-list</button> 
+                            : <p className="text-success">In Wishlist</p>}
                             <br/>
                             <h4>Popular!</h4>
-                            <p>This post have {this.state.views} views</p>
+                            <p>This post has {this.state.views} views</p>
                             <p>Have {this.state.likes} people save this property to their wishlist</p>
                         </div>
                     </div>
@@ -170,8 +172,8 @@ export default class PostDetail extends Component {
                             <p>Address: {this.state.street}, {this.state.ward}, {this.state.district}, {this.state.city}</p>
                             <p>Room type: {this.state.room_type}</p>
                             <p>Area: {this.state.area} M2</p>
-                            <p>Facilities: {this.state.bathroom ? <a>bathroom</a>:<a></a>}, {this.state.kitchen ? <a>kitchen</a>:<a></a>}, {this.state.air_con ? <a>air conditioner</a>:<a></a>}, {this.state.water_heater ? <a>water heater</a>:<a></a>}</p>
-                            <p>Servies: electricity rate {this.state.electricity} per KWH, water rate {this.state.water} per M3</p>
+                            <p>Facilities: {this.state.bathroom ? <span>bathroom</span>:<span></span>} {this.state.kitchen ? <span>, kitchen</span>:<span></span>} {this.state.air_con ? <span>, air conditioner</span>:<span></span>} {this.state.water_heater ? <span>, water heater</span>:<span></span>}</p>
+                            <p>Servies: Electricity rate: {this.state.electricity}VND/KWH, water rate: {this.state.water}VND/M3</p>
                         </div>
                         <div className="col-sm-6">
                             <h2>Contact Infomation</h2>
