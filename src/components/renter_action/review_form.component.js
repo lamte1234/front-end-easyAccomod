@@ -72,11 +72,11 @@ export default class ReviewForm extends Component {
                 }
                 <form method="POST" onSubmit={this.onSubmit}>
                     <div className="form-group rating">
-                            <span><input type="checkbox" name="star1" id="star1" value="1" checked={this.state.star_checked[0]} onChange={this.onChangeStar}></input></span>
-                            <span><input type="checkbox" name="star2" id="star2" value="2" checked={this.state.star_checked[1]} onChange={this.onChangeStar}></input></span>
-                            <span><input type="checkbox" name="star3" id="star3" value="3" checked={this.state.star_checked[2]} onChange={this.onChangeStar}></input></span>
-                            <span><input type="checkbox" name="star4" id="star4" value="4" checked={this.state.star_checked[3]} onChange={this.onChangeStar}></input></span>
-                            <span><input type="checkbox" name="star5" id="star5" value="5" checked={this.state.star_checked[4]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" className="star" name="star1" id="star1" value="1" checked={this.state.star_checked[0]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" className="star"  name="star2" id="star2" value="2" checked={this.state.star_checked[1]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" className="star"  name="star3" id="star3" value="3" checked={this.state.star_checked[2]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" className="star"  name="star4" id="star4" value="4" checked={this.state.star_checked[3]} onChange={this.onChangeStar}></input></span>
+                            <span><input type="checkbox" className="star"  name="star5" id="star5" value="5" checked={this.state.star_checked[4]} onChange={this.onChangeStar}></input></span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="review">Review</label>

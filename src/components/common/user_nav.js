@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import LogOut from '../logout.component';
 
@@ -7,13 +8,16 @@ import LogOut from '../logout.component';
 export default function Nav() {
     return(
         <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
+            <div className="container">
                 <Link to={'/users/'+localStorage.getItem('user_type')} className="navbar-brand">EasyAccomod</Link>
                 <div className="collpase navbar-collapse">
                     <ul className="navbar-nav mr-auto">
-                        <LogOut />
-                        <li className="navbar-item">Welcome {localStorage.getItem('user_type')}</li>
                     </ul>
+                    <div className="navbar-item navbar-nav text-light"><LogOut/></div>
+                    <div className="navbar-item nav-link text-light">Hi, {localStorage.getItem('user_type')}</div>
                 </div>
+            </div>
+                
         </nav>
     );
 }

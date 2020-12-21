@@ -8,7 +8,8 @@ body,html {
 }
 .home-layout {
     background: linear-gradient(-45deg, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
+    background-size: 400% 400%;
+    background-repeat: repeat;
     animation: gradient 15s ease infinite;
     height: 100%; 
 }

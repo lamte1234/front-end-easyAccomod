@@ -1,0 +1,64 @@
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+body,html {
+    height: 100%;
+}
+
+/* Navbar */
+/*  */
+nav.user-nav {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+}
+
+/* ListPost */
+/*  */
+.post {
+    height: 250px;
+    border-radius: 2px;
+    background-color: azure;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.img-demo {
+    width: 98%;
+    height: 98%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.rate p {
+    top: 5%;
+    position: relative;
+}
+.rate button{
+    top: 50%;
+    position: relative;
+}
+.rented-rate{
+    font-size: 30px;
+    color: #f25202;
+}
+
+
+
+.star {
+    visibility:hidden;
+    font-size:30px;
+    cursor:pointer;
+    margin-right: 8px;
+}
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+   
+}
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+   color: yellow;
+}

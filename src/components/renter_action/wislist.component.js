@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Nav from '../common/renter_nav';
 
-const Post = props => (
-    <tr onClick={() => window.location = `/users/renter/post/${props.post._id}`}>
-        <td>{props.post.title}</td>
-        <td>{props.post.city}</td>
-        <td>{props.post.district}</td>
-        <td>{props.post.ward}</td>
-        <td>{props.post.room_type}</td>
-        <td>{props.post.rented_rate}</td>
-    </tr>
-)
+const Post = props => {
+    return(
+    <div className="row mt-3 post">
+        <div className="col-sm-4 img-demo">
+            <Link to={`/users/renter/post/${props.post._id}`}>
+                <img className="img-demo" src={'http://localhost:5000/' + props.post.image[0]} width="100%" alt="preview"></img>
+            </Link>
+            
+        </div>
+        <div className="col-sm-5 info">
+            <Link to={`/users/renter/post/${props.post._id}`}><h3>{props.post.title}</h3></Link>
+            <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
+            {props.post.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
+        </div>
+        <div className="col-sm-3 rate">
+            <p><span className="rented-rate">{props.post.rented_rate} vnd</span>/month</p>
+            <Link to={`/users/renter/post/${props.post._id}`}>
+                <button className="btn btn-info">View room</button>
+            </Link>
+        </div>
+    </div>
+    )
+}
 
 export default class Wishlist extends Component {
     constructor(props) {
@@ -43,22 +57,7 @@ export default class Wishlist extends Component {
             <div>
                 <Nav />
                 <div className="container">
-                    <br />
-                    <table className='table table-hover'>
-                        <thead className="thead-light">
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">City</th>
-                                <th scope="col">District</th>
-                                <th scope="col">Ward</th>
-                                <th scope="col">Room Type</th>
-                                <th scope="col">Rented Rate</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.postList()}
-                        </tbody>
-                    </table>
+                    {this.postList()}
                 </div>
             </div>
         );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../components/navbar.component';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../css/login.css';
-import {Link} from 'react-router-dom';
-
 
 export default class Login extends Component {
     constructor(props) {
@@ -58,7 +57,7 @@ export default class Login extends Component {
             }
             if(res.data.errors) {
                 this.setState({
-                    errors: res.data.errors
+                    errors: res.data.errors 
                 })
             };
 
@@ -106,15 +105,14 @@ export default class Login extends Component {
                                     <option value="owner_account">Owner</option>
                                     <option value="renter_account">Renter</option>
                                     <option value="admin_account">Admin</option></select></div>
-                            <div className="text-center"><button className="btn btn-primary login">Login</button></div>
+                            <div className="text-center"><button className="login btn btn-outline-light">Login</button></div>
                             
                         </form>
                     </div>
+
                 </div>
                 
             </div>
-            
-                
         );
     }
 }
