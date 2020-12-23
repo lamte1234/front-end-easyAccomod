@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import Nav from '../common/owner_nav';
+import '../../css/owner.css'
 
+import AllPost from '../owner_action/allPost.component';
 
 export default class OwnerWS extends Component {
 
@@ -9,7 +10,7 @@ export default class OwnerWS extends Component {
     render() {
         return (
             <div>
-                <Nav></Nav>
+                <AllPost/>
             </div>
         )
     }
