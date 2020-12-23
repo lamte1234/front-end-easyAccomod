@@ -30,13 +30,17 @@ export default class AdminPostDetail extends Component {
             water: '', //vnd per m3
             image: [],
             status: false,
+            owner_name: '',
+            owner_phone: '',
             is_approved: ''
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:5000/users/admin/posts/'+this.props.match.params.id, {withCredentials: true})
-        .then(res => this.setState({
+        .then(res => {
+            console.log(res.data);
+            this.setState({
             id: res.data._id,
             title: res.data.title,
             city: res.data.city,
@@ -54,8 +58,12 @@ export default class AdminPostDetail extends Component {
             water: res.data.water, //vnd per m3
             image: res.data.image,
             status: res.data.status,
+            owner_name: res.data.owner_id.name,
+            owner_phone: res.data.owner_id.phone,
             is_approved: res.data.is_approved
-        }))
+        })
+        }
+            )
         .catch(err => console.log(err));
         
     }
