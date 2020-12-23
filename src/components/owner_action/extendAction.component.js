@@ -28,7 +28,7 @@ export default class ExtendAction extends Component {
         axios.patch('http://localhost:5000/users/owner/extend/'+this.props.match.params.id, {time: this.state.time}, {withCredentials: true})
         .then(res => {
             if (res.status === 200 && !res.data.errors){
-                alert ("Extending request has been. Please wait for approval.")
+                alert ("Extending request has been recorded. Please wait for approval.")
                 window.location.href = ('http://localhost:3000/users/owner/all-post')
             }
             if(res.data.errors){

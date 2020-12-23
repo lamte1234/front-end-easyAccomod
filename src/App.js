@@ -24,6 +24,7 @@ import EditPost from './components/owner_action/editPost.component';
 import AllPost from './components/owner_action/allPost.component';
 import Extend from './components/owner_action/extend.component';
 import ExtendAction from './components/owner_action/extendAction.component';
+import OwnerNotification from './components/owner_action/notifications.component';
 
 import AdminAcc from './components/admin_action/adminAccount.component';
 import AdminPost from './components/admin_action/adminPost.component';
@@ -56,6 +57,7 @@ function App() {
       <Route path='/users/owner/all-post' exact component={AllPost}></Route>
       <Route path="/users/owner/extend/" exact component={Extend}></Route>
       <Route path="/users/owner/extend/:id" exact component={ExtendAction}></Route>
+      <Route path="/users/owner/notifications" exact component={OwnerNotification}></Route>
       {/* ----------------------------ADMIN--------------------------------------- */}
       <Route path='/users/admin/' exact component={AdminWS}></Route>
       <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
