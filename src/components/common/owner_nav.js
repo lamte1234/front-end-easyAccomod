@@ -12,14 +12,9 @@ export default function Nav() {
             <div className="collpase navbar-collapse">
                 <ul className="navbar-nav mr-auto">
                     <li className="navbar-item">
-                        <Link to="/users/owner" className="nav-link text-light">Notifications</Link>
+                        <Link to="/users/owner/notifications" className="nav-link text-light">Notifications</Link>
                     </li>
                     <li className="navbar-item">
-                        {/* fix later */}
-                        <Link to="/users/owner" className="nav-link text-light">Statistics</Link> 
-                    </li>
-                    <li className="navbar-item">
-                        {/* fix later */}
                         <Link to="/users/owner/extend" className="nav-link text-light">Extend</Link>
                     </li>
                 </ul>
