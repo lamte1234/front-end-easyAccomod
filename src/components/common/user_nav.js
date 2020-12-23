@@ -6,7 +6,7 @@ import LogOut from '../logout.component';
 
 export default function Nav() {
     return(
-        <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
+        <nav className="navbar navbar-dark bg-primary navbar-expand-lg user-nav">
             <div className="container">
                 <Link to={'/users/'+localStorage.getItem('user_type')} className="navbar-brand">EasyAccomod</Link>
                 <div className="collpase navbar-collapse">

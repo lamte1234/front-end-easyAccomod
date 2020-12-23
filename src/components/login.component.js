@@ -89,6 +89,7 @@ export default class Login extends Component {
                             this.state.errors.map((err,index) => 
                             <div className='alert alert-danger' key={index}>{err}</div>)
                         }
+                        <h2 className="text-light login">Login</h2>
                         <form action="/login" method="POST" onSubmit={this.onSubmit}>
                             <div className="form-group text-light"><label htmlFor="email">Email</label>
                                 <input className="form-control" id="email" type="email"
@@ -104,7 +105,7 @@ export default class Login extends Component {
                                     <option value="owner_account">Owner</option>
                                     <option value="renter_account">Renter</option>
                                     <option value="admin_account">Admin</option></select></div>
-                            <div className="text-center"><button className="login btn btn-outline-light">Login</button></div>
+                            <div className="text-center"><button className="btn btn-outline-light">Login</button></div>
                             
                         </form>
                     </div>

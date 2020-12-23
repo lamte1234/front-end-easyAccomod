@@ -47,7 +47,7 @@ nav.user-nav {
 
 .star {
     visibility:hidden;
-    font-size:30px;
+    font-size:20px;
     cursor:pointer;
     margin-right: 8px;
 }
@@ -55,10 +55,33 @@ nav.user-nav {
    content: "\2605";
    position: absolute;
    visibility:visible;
-   
+   color: yellow;
 }
 .star:checked:before {
    content: "\2606";
    position: absolute;
    color: yellow;
+}
+
+.rating, .form-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-row button {
+    height: 2.4rem;
+}
+
+.review {
+    line-height: 1.25rem;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+.user-avatar {
+    width: 100%;
+    height: 100%;
 }

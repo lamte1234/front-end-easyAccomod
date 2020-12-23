@@ -18,20 +18,15 @@ export default class Signup extends Component {
                         </ul>
                     </div>
                 </nav>
-                <div className="container text-center">
-
-                    <div className="link-signup row">
-                        <Link to="/signup/renter">
-                            <div className="text-center"></div>
-                            <button className="d-block btn btn-outline-light">For Renter</button>
-                        </Link>
-                        <Link to="/signup/owner">
-                            <button className="d-block btn btn-outline-light">For Owner</button>
-                        </Link>
-                    </div>
-                        
+                <h1 className="text-light slogan">Register an account to access the website</h1>
+                <div className="link-signup">
+                    <div className="text-center row">
+                        <div className="col-sm-6">
+                            <button className="d-block btn btn-outline-light float-right" onClick={() => window.location='/signup/renter'}>For Renter</button></div>
+                        <div className="col-sm-6">
+                            <button className="d-block btn btn-outline-light float-left" onClick={() => window.location='/signup/owner'}>For Owner</button></div>
+                    </div>   
                 </div>
-                
             </div>
         );
     }

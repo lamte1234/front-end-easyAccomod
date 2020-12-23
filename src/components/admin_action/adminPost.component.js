@@ -46,11 +46,12 @@ export default class ApprovePost extends Component {
         return (
             <div>
                 <AdminNav />
+                <br/>
                 <div className="container">
-                    <h3>List</h3>
+                    <h3>List of Posts</h3>
                     <hr />
                     <table className="table table-bordered">
-                        <thead>
+                        <thead className="thead-light">
                             <tr>
                                 <th>Title</th>
                                 <th>City</th>

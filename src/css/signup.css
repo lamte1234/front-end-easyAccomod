@@ -12,3 +12,31 @@ body,html {
     animation: gradient 15s ease infinite;
     height: 100%; 
 }
+
+.signup-container {
+    top: 10%;
+    border: 2px solid #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.signup-block {
+    margin: 10px auto 20px auto;
+}
+
+h1.slogan {
+    position: relative;
+    font-size: 60px;
+    text-align: center;
+    top: 25%;
+}
+
+.link-signup {
+    position: relative;
+    top: 30%;
+}
+
+h2.signup{
+    text-align: center;
+}
+

@@ -24,4 +24,8 @@ body,html {
     margin: 10px auto 20px auto;
 }
 
+h2.login {
+    text-align: center;
+}
+
 

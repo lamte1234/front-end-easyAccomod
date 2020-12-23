@@ -65,7 +65,6 @@ export default class ReviewForm extends Component {
     render() {
         return(
             <div>
-                <br />
                 {
                     this.state.errors.map((err, index) =>
                         <div className='alert alert-danger' key={index}>{err}</div>)
@@ -78,12 +77,13 @@ export default class ReviewForm extends Component {
                             <span><input type="checkbox" className="star"  name="star4" id="star4" value="4" checked={this.state.star_checked[3]} onChange={this.onChangeStar}></input></span>
                             <span><input type="checkbox" className="star"  name="star5" id="star5" value="5" checked={this.state.star_checked[4]} onChange={this.onChangeStar}></input></span>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="review">Review</label>
-                        <input className="form-control" id="review" type="text" 
-                        value={this.state.review} name="review" onChange={this.onChangeReview} />
+                    <div className="form-row">
+                        <div className="form-group col-sm-10">
+                            <input className="form-control mr-auto" id="review" type="text" 
+                            value={this.state.review} name="review" onChange={this.onChangeReview} placeholder="Share your thoughts" />
+                        </div>
+                        <button className="btn btn-info">Review</button>
                     </div>
-                    <button className="btn btn-primary">Review</button>
                 </form>
             </div>
         );

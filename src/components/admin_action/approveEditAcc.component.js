@@ -61,6 +61,8 @@ export default class EditAcc extends Component {
                 <Nav />
                 <br />
                 <div className='container'>
+                <h3>List of Accounts</h3>
+                <br/>
                 <table className='table'>
                     <thead className="thead-light">
                         <tr>

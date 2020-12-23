@@ -43,18 +43,18 @@ export default class ReportForm extends Component {
     render() {
         return(
             <div>
-                <br />
                 {
                     this.state.errors.map((err, index) =>
                         <div className='alert alert-danger' key={index}>{err}</div>)
                 }
                 <form method="POST" onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="comment">Report</label>
-                        <input type="text" className="form-control" id="comment" 
-                        name="comment" value={this.state.comment} onChange={this.onChangeComment}></input>
+                    <div className="form-row">
+                        <div className="form-group col-sm-10">
+                            <input type="text" className="form-control" id="comment" 
+                            name="comment" value={this.state.comment} onChange={this.onChangeComment} placeholder="What's wrong in this post" ></input>
+                        </div>
+                        <button className="btn btn-danger">Report</button>
                     </div>
-                    <button className="btn btn-danger">Report</button>
                 </form>
             </div>
         );
