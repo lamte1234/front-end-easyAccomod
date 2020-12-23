@@ -49,7 +49,7 @@ export default class ApprovePost extends Component {
                 <div className="container">
                     <h3>List</h3>
                     <hr />
-                    <table className="table table-bordered">
+                    <table className="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -57,7 +57,7 @@ export default class ApprovePost extends Component {
                                 <th>Room type</th>
                                 <th>Rented rate</th>
                                 <th>Time</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>

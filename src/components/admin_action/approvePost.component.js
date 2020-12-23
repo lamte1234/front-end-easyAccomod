@@ -27,7 +27,8 @@ export default class AdminPostDetail extends Component {
             electricity: '', //vnd per kwh
             water: '', //vnd per m3
             image: [],
-            is_approved: ''
+            is_approved: '',
+            status: ''
         }
     }
 
@@ -50,7 +51,8 @@ export default class AdminPostDetail extends Component {
             electricity: res.data.electricity, //vnd per kwh
             water: res.data.water, //vnd per m3
             image: res.data.image,
-            is_approved: res.data.is_approved
+            is_approved: res.data.is_approved,
+            status: res.data.status
         }))
         .catch(err => console.log(err));
         
@@ -98,11 +100,13 @@ export default class AdminPostDetail extends Component {
                     {this.state.image.map((img, index) => 
                         <img className="img-fluid m-2" src={'http://localhost:5000/'+img} key={index} width="200" alt="room_image"></img>
                     )}
+                    <h4>Status: </h4> 
+                    {this.state.status ? <p className="text-success">Available</p> : <p className="text-danger">Rented</p>} 
                     {!this.state.is_approved ?
                     <button className="btn btn-primary" onClick={() => this.approvePost(this.state.id)}>Approve</button>
                     :
                     <div></div>
-                    }          
+                    }        
                 </div>
             </div>
         )

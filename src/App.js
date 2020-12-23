@@ -31,6 +31,7 @@ import AdminPost from './components/admin_action/adminPost.component';
 import AdminPostDetail from './components/admin_action/approvePost.component';
 import EditAcc from './components/admin_action/approveEditAcc.component';
 import AdminReport from './components/admin_action/adminReport.component';
+import AdminNotifications from './components/admin_action/notifications.component';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
       <Route path='/users/admin/report/' exact component={AdminReport}></Route>
       <Route path='/users/admin/posts/:id' exact component={AdminPostDetail}></Route>
       <Route path='/users/admin/edit-auth/' exact component={EditAcc}></Route>
+      <Route path='/users/admin/notifications' exact component={AdminNotifications}></Route>
     </Router>
   );
 }
