@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Nav from '../common/owner_nav';
 
@@ -63,7 +64,18 @@ export default class AllPost extends Component {
             <div>
                 <Nav />
                 <div className="container">
+                    <br/>
+                    <div className="row">
+                        <h2 className="mr-auto">All Post</h2>
+                        <Link to="/users/owner/post" className="add-btn">
+                            <button className="btn btn-info">Add Post</button>
+                        </Link>
+                        <Link to="/users/owner/edit" className="edit-btn">
+                            <button className="btn btn-info">Edit Post</button>
+                        </Link>
+                    </div>
                     <br />
+                    <br/>
                     <table className="table table-hover">
                         <thead className="thead-light">
                             <tr>

@@ -1,0 +1,31 @@
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+body,html {
+    height: 100%;
+}
+
+/* Navbar */
+/*  */
+nav.user-nav {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+}
+
+.add-btn {
+    margin-right: 10px;
+}
+
+thead {
+    border-bottom: 5px solid #23a6d5;
+}
+thead tr th {
+    color: #23a6d5;
+}
+
+.pro-checkbox {
+    width: 20px;
+    height: 20px;
+    float: right;
+}

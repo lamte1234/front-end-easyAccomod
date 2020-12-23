@@ -44,6 +44,8 @@ export default class Extend extends Component {
                 <Nav />
                 <br/>
                 <div className="container">
+                    <h2>Extension List</h2>
+                    <br/>
                     <table className="table table-hover">
                         <thead className="thead-light">
                             <tr>

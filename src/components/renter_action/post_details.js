@@ -159,6 +159,7 @@ export default class PostDetail extends Component {
                             <button className="btn btn-info" onClick={this.addToWishlist}>Add to Wish-list</button> 
                             : <p className="text-success">In Wishlist</p>}
                             <br/>
+                            <br/>
                             <h4>Popular!</h4>
                             <p>This post has {this.state.views} views</p>
                             <p>Have {this.state.likes} people save this property to their wishlist</p>

@@ -193,81 +193,110 @@ export default class Post extends Component {
                             <div className='alert alert-danger' key={index}>{err}</div>)
                     }
                     <form action="" method="PUT" encType="multipart/form-data" onSubmit={this.onSubmit}>
-                        <div className="form-group"><label htmlFor="Title">Title</label>
+                    <h3>Title</h3>
+                        <div className="form-group">
                             <input className="form-control" id="title" type="text" name="title" 
-                            value={this.state.title} onChange={this.onChangeTitle} /></div>
-                        <div className="form-group"><label htmlFor="city">City</label>
-                            <input className="form-control" id="city" type="text" name="city"
-                            value={this.state.city} onChange={this.onChangeCity} /></div>
-                        <div className="form-group"><label htmlFor="district">District</label>
-                            <input className="form-control" id="district" type="text" name="district"
-                            value={this.state.district} onChange={this.onChangeDistrict} /></div>
-                        <div className="form-group"><label htmlFor="ward">Ward</label>
-                            <input className="form-control" id="ward" type="text" name="ward" 
-                            value={this.state.ward} onChange={this.onChangeWard} /></div>
-                        <div className="form-group"><label htmlFor="street">Street</label>
-                            <input className="form-control" id="street" type="text" name="street" 
-                            value={this.state.street} onChange={this.onChangeStreet} /></div>
-                        <div className="form-group"><label htmlFor="room_type">Room Type</label>
-                            <input className="form-control" id="room_type" type="text" name="room_type" 
-                            value={this.state.room_type} onChange={this.onChangeRoomType} /></div>
-                        <div className="form-group"><label htmlFor="rented_rate">Rented Rate</label>
-                            <input className="form-control" id="rented_rate" type="number" name="rented_rate" 
-                            value={this.state.rented_rate} onChange={this.onChangeRentedRate} /></div>
-                        <div className="form-group"><label htmlFor="area">Area</label>
-                            <input className="form-control" id="area" type="number" name="area" 
-                            value={this.state.area} onChange={this.onChangeArea} /></div>
-                        {this.state.bathroom === true ?
-                        <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
-                            <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
-                            value={this.state.bathroom} onChange={this.onChangeBathroom} defaultChecked /></div>
-                            :
-                        <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
-                            <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
-                            value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
-                        }
-                        {this.state.kitchen === true ?
-                        <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
-                            <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
-                            value={this.state.kitchen} onChange={this.onChangeKitchen} defaultChecked /></div>
-                            :
-                        <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
-                            <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
-                            value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
-                        }
-                        {this.state.air_con === true ?
-                        <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
-                            <input className="form-control" id="air_con" type="checkbox" name="air_con" 
-                            value={this.state.air_con} onChange={this.onChangeAirCon} defaultChecked /></div>
-                            :
-                        <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
-                            <input className="form-control" id="air_con" type="checkbox" name="air_con" 
-                            value={this.state.air_con} onChange={this.onChangeAirCon} /></div>
-                        }
-                        {this.state.water_heater === true ?
-                        <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
-                            <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
-                            value={this.state.water_heater} onChange={this.onChangeWaterHeater} defaultChecked /></div>
-                            :
-                        <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
-                            <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
-                            value={this.state.water_heater} onChange={this.onChangeWaterHeater} /></div>
-                        }
-                        <div className="form-group"><label htmlFor="electricity">Electricity</label>
-                            <input className="form-control" id="electricity" type="number" name="street" 
-                            value={this.state.electricity} onChange={this.onChangeElectricity} /></div>
-                        <div className="form-group"><label htmlFor="water">Water</label>
-                            <input className="form-control" id="water" type="number" name="water" 
-                            value={this.state.water} onChange={this.onChangeWater} /></div>
-                        {this.state.status === true ?
-                        <div className="form-group"><label htmlFor="status">Room Status</label>
-                            <input className="form-control" id="status" type="checkbox" name="status" 
-                            value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
-                            :
-                            <div className="form-group"><label htmlFor="status">Room Status</label>
-                            <input className="form-control" id="status" type="checkbox" name="status" 
-                            value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
-                        }
+                            value={this.state.title} onChange={this.onChangeTitle} placeholder="Title of post" /></div>
+                        <br/>
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <h3>Address Infomation</h3>
+                                <div className="form-group">
+                                    <input className="form-control" id="city" type="text" name="city"
+                                    value={this.state.city} onChange={this.onChangeCity} placeholder="City" /></div>
+                                <div className="form-group">
+                                    <input className="form-control" id="district" type="text" name="district"
+                                    value={this.state.district} onChange={this.onChangeDistrict} placeholder="District" /></div>
+                                <div className="form-group">
+                                    <input className="form-control" id="ward" type="text" name="ward" 
+                                    value={this.state.ward} onChange={this.onChangeWard} placeholder="Ward" /></div>
+                                <div className="form-group">
+                                    <input className="form-control" id="street" type="text" name="street" 
+                                    value={this.state.street} onChange={this.onChangeStreet} placeholder="Street" /></div>
+                                <br/>
+                            </div>
+                            <div className="col-sm-6">
+                                <h3>Description</h3>
+                                <div className="form-group">
+                                    <select className="form-control" id="room_type" type="text" name="room_type" 
+                                    value={this.state.room_type} onChange={this.onChangeRoomType}>
+                                        <option>Apartment</option>
+                                        <option>Guest House</option>
+                                        <option>Shared Room</option>
+                                        <option>Premium Apartment</option>
+                                        <option>House</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <input className="form-control" id="rented_rate" type="number" name="rented_rate" 
+                                    value={this.state.rented_rate} onChange={this.onChangeRentedRate} placeholder="Rented Rate (VND/month)" /></div>
+                                <div className="form-group">
+                                    <input className="form-control" id="area" type="number" name="area" 
+                                    value={this.state.area} onChange={this.onChangeArea} placeholder="Area (M2)" /></div>
+                                <br/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <h3>Property Infomation</h3>
+                                {this.state.bathroom === true ?
+                                <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
+                                    <input className="pro-checkbox" id="bathroom" type="checkbox" name="bathroom"
+                                    value={this.state.bathroom} onChange={this.onChangeBathroom} defaultChecked /></div>
+                                    :
+                                <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
+                                    <input className="pro-checkbox" id="bathroom" type="checkbox" name="bathroom"
+                                    value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
+                                }
+                                {this.state.kitchen === true ?
+                                <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
+                                    <input className="pro-checkbox" id="kitchen" type="checkbox" name="kitchen" 
+                                    value={this.state.kitchen} onChange={this.onChangeKitchen} defaultChecked /></div>
+                                    :
+                                <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
+                                    <input className="pro-checkbox" id="kitchen" type="checkbox" name="kitchen" 
+                                    value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
+                                }
+                                {this.state.air_con === true ?
+                                <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
+                                    <input className="pro-checkbox" id="air_con" type="checkbox" name="air_con" 
+                                    value={this.state.air_con} onChange={this.onChangeAirCon} defaultChecked /></div>
+                                    :
+                                <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
+                                    <input className="pro-checkbox" id="air_con" type="checkbox" name="air_con" 
+                                    value={this.state.air_con} onChange={this.onChangeAirCon} /></div>
+                                }
+                                {this.state.water_heater === true ?
+                                <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
+                                    <input className="pro-checkbox" id="water_heater" type="checkbox" name="water_heater" 
+                                    value={this.state.water_heater} onChange={this.onChangeWaterHeater} defaultChecked /></div>
+                                    :
+                                <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
+                                    <input className="pro-checkbox" id="water_heater" type="checkbox" name="water_heater" 
+                                    value={this.state.water_heater} onChange={this.onChangeWaterHeater} /></div>
+                                }
+                                <br/>
+                            </div>
+                            <div className="col-sm-6">
+                                <h3>Services</h3>
+                                <div className="form-group">
+                                    <input className="form-control" id="electricity" type="number" name="street" 
+                                    value={this.state.electricity} onChange={this.onChangeElectricity} placeholder="Electricity Rate" /></div>
+                                <div className="form-group">
+                                    <input className="form-control" id="water" type="number" name="water" 
+                                    value={this.state.water} onChange={this.onChangeWater} placeholder="Water Rate" /></div>
+                                <h3>Room status</h3>
+                                {this.state.status === true ?
+                                <div className="form-group"><label htmlFor="status">Available</label>
+                                    <input className="pro-checkbox" id="status" type="checkbox" name="status" 
+                                    value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
+                                    :
+                                    <div className="form-group"><label htmlFor="status">Room Status</label>
+                                    <input className="pro-checkbox" id="status" type="checkbox" name="status" 
+                                    value={this.state.status} onChange={this.onChangeStatus} defaultChecked /></div>
+                                }
+                            </div>
+                        </div>
                         <button className="btn btn-primary">Commit</button>
                     </form>
                 </div>
