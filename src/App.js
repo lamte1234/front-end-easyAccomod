@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 import Login from './components/login.component';
 import Home from './components/home.component';
@@ -46,27 +46,41 @@ function App() {
       <Route path='/signup/renter/' exact component={RenterSU}></Route>
       <Route path='/signup/owner/' exact component={OwnerSU}></Route>
       {/* ----------------------------RENTER------------------------------ */}
-      <Route path='/users/renter/' exact component={RenterWS}></Route>
-      <Route path='/users/renter/search/' exact component={Search}></Route>
-      <Route path='/users/renter/post/:id' exact component={PostDetail}></Route>
-      <Route path='/users/renter/wishlist' exact component={Wishlist}></Route>
-      {/* ---------------------------OWNER-------------------------------- */}
-      <Route path='/users/owner/' exact component={OwnerWS}></Route>
-      <Route path='/users/owner/post/' exact component={Post}></Route>
-      <Route path='/users/owner/edit' exact component={OwnerPost}></Route>
-      <Route path='/users/owner/edit/:id' exact component={EditPost}></Route>
-      <Route path='/users/owner/all-post' exact component={AllPost}></Route>
-      <Route path="/users/owner/extend/" exact component={Extend}></Route>
-      <Route path="/users/owner/extend/:id" exact component={ExtendAction}></Route>
-      <Route path="/users/owner/notifications" exact component={OwnerNotification}></Route>
-      {/* ----------------------------ADMIN--------------------------------------- */}
-      <Route path='/users/admin/' exact component={AdminWS}></Route>
-      <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
-      <Route path='/users/admin/posts/' exact component={AdminPost}></Route>
-      <Route path='/users/admin/report/' exact component={AdminReport}></Route>
-      <Route path='/users/admin/posts/:id' exact component={AdminPostDetail}></Route>
-      <Route path='/users/admin/edit-auth/' exact component={EditAcc}></Route>
-      <Route path='/users/admin/notifications' exact component={AdminNotifications}></Route>
+      { (localStorage.getItem('user_type') === 'renter') ?
+      <Switch>
+        <Route path='/users/renter/' exact component={RenterWS}></Route>
+        <Route path='/users/renter/search/' exact component={Search}></Route>
+        <Route path='/users/renter/post/:id' exact component={PostDetail}></Route>
+        <Route path='/users/renter/wishlist' exact component={Wishlist}></Route>
+      </Switch>
+      :
+      /* ---------------------------OWNER-------------------------------- */
+        (localStorage.getItem('user_type') === 'owner') ?
+      <Switch>
+        <Route path='/users/owner/' exact component={OwnerWS}></Route>
+        <Route path='/users/owner/post/' exact component={Post}></Route>
+        <Route path='/users/owner/edit' exact component={OwnerPost}></Route>
+        <Route path='/users/owner/edit/:id' exact component={EditPost}></Route>
+        <Route path='/users/owner/all-post' exact component={AllPost}></Route>
+        <Route path="/users/owner/extend/" exact component={Extend}></Route>
+        <Route path="/users/owner/extend/:id" exact component={ExtendAction}></Route>
+        <Route path="/users/owner/notifications" exact component={OwnerNotification}></Route>
+      </Switch>
+      :
+      /* ----------------------------ADMIN--------------------------------------- */
+      (localStorage.getItem('user_type') === 'admin') ?
+      <Switch>
+        <Route path='/users/admin/' exact component={AdminWS}></Route>
+        <Route path='/users/admin/accounts/' exact component={AdminAcc}></Route>
+        <Route path='/users/admin/posts/' exact component={AdminPost}></Route>
+        <Route path='/users/admin/report/' exact component={AdminReport}></Route>
+        <Route path='/users/admin/posts/:id' exact component={AdminPostDetail}></Route>
+        <Route path='/users/admin/edit-auth/' exact component={EditAcc}></Route>
+        <Route path='/users/admin/notifications' exact component={AdminNotifications}></Route>
+      </Switch>
+      :
+      <Redirect to="/login"></Redirect>
+      }
     </Router>
   );
 }
