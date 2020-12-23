@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from '../navbar.component';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../../css/signup.css'
 
 export default class RenterSU extends Component {
     constructor(props) {
@@ -68,27 +69,45 @@ export default class RenterSU extends Component {
 
     render() {
         return (
-            <div>
-                <Navbar />
-                <div className="container">
-                    <br />
-                    {
-                        this.state.errors.map((err, index) =>
+            <div className="signup-layout">
+                <nav className="navbar navbar-dark navbar-expand-lg">
+                    <div className="container">
+                        <Link to="/" className="navbar-brand">EasyAccomod</Link>
+                        <ul className="navbar-nav navbar-right">
+                            <li className="navbar-item">
+                            <Link to="/login" className="nav-link text-light">
+                               <button className="d-block btn btn-outline-light">Login</button>
+                            </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div className="signup-container col-sm-4">
+                    <br/>
+                    <div className="signup-block col-sm-11">
+                        {
+                            this.state.errors.map((err,index) => 
                             <div className='alert alert-danger' key={index}>{err}</div>)
-                    }
-                    <form action="/signup/renter" method="POST" onSubmit={this.onSubmit}>
-                        <div className="form-group"><label htmlFor="email" >Email</label>
-                            <input className="form-control" id="email" type="email" name="email" value={this.state.email} onChange={this.onChangeEmail} /></div>
-                        <div className="form-group"><label htmlFor="name">Name</label>
-                            <input className="form-control" id="name" type="text" name="name" value={this.state.name} onChange={this.onChangeName} /></div>
-                        <div className="form-group"><label htmlFor="password">Password</label>
-                            <input className="form-control" id="password" type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /></div>
-                        <div className="form-group"><label htmlFor="cf_pass">Confirm Password</label>
-                            <input className="form-control" id="cf_pass" type="password" name="cf_pass" value={this.state.cf_pass} onChange={this.onChangeCfPass} /></div>
-                        <button className="btn btn-primary">Sign Up</button>
-                    </form>
+                        }
+                        <h2 className="text-light signup">Create Account</h2>
+                        <br/>
+                        <form action="/signup/owner" method="POST" onSubmit={this.onSubmit}>
+                            <div className="form-group text-light">
+                                <input className="form-control" id="email" type="email" name="email" 
+                                value={this.state.email} onChange={this.onChangeEmail} placeholder="Email" /></div>
+                            <div className="form-group text-light">
+                                <input className="form-control" id="name" type="text" name="name"
+                                value={this.state.name} onChange={this.onChangeName} placeholder="Name" /></div>
+                            <div className="form-group text-light">
+                                <input className="form-control" id="password" type="password" name="password" 
+                                value={this.state.password} onChange={this.onChangePassword} placeholder="Password" /></div>
+                            <div className="form-group text-light">
+                                <input className="form-control" id="cf_pass" type="password" name="cf_pass" 
+                                value={this.state.cf_pass} onChange={this.onChangeCfPass} placeholder="Confirm Password" /></div>
+                            <div className="text-center"><button className="btn btn-outline-light">Sign Up</button></div>
+                        </form>
+                    </div>
                 </div>
-                
             </div>
         );
     }

@@ -10,7 +10,7 @@ import ReportForm from './report_form.component';
 
 const Star = (star) => {
     let arr = [];
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < star; i++){
         if(i < star) {
             arr[i] = true; 
         }
@@ -20,7 +20,7 @@ const Star = (star) => {
     }
     return (
         arr.map((elem, index) => {
-            if(elem === true) {return <span key={index}>X </span>} // replace with bright star image
+            if(elem === true) {return <span key={index} className="star">X </span>} // replace with bright star image
             else {return <span key={index}>O </span>}
         })
     )
@@ -28,12 +28,15 @@ const Star = (star) => {
 
 const Review = props => (
 
-    <div>
-        <h5 className="renter_name">{props.review.renter_id.name}</h5>
-        <div className="star">
-            {Star(props.review.star)}
+    <div className="review form-row">
+        <div className="avatar">
+            <img  className="user_avatar" src={'http://localhost:5000/uploads/user-avatar.jpg'} width="100%" alt="user-avatar"></img>
         </div>
-        <p className="renter_review">{props.review.review}</p>
+        <div>
+            <h6 className="renter_name">{props.review.renter_id.name}</h6>
+            {Star(props.review.star)}
+            <p className="renter_review">{props.review.review}</p>
+        </div>
     </div>
 );
 
@@ -182,13 +185,13 @@ export default class PostDetail extends Component {
                             <p>Phone number: {this.state.owner_phone}</p>
                         </div>
                     </div>
-                    <h2>Review</h2>
+                    <h3>Review</h3>
                     <ReviewForm post_id={this.state.id}/>
                     <br />
-                    <h2>Report</h2>
+                    {this.showReview()}
+                    <h3>Report</h3>
                     <ReportForm post_id={this.state.id}></ReportForm>
                     <br />
-                    {this.showReview()}
                 </div>
             </div>
         )

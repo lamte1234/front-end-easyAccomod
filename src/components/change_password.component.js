@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import '../css/change_password.css'
 
 import Nav from './common/user_nav';
 
@@ -68,26 +69,31 @@ export default class ChangePass extends Component {
             <div>
                 <Nav />
                 <br />
-                    {
-                        this.state.errors.map((err,index) => 
-                        <div className='alert alert-danger' key={index}>{err}</div>)
-                    }
-                <div className="container">
-                    <form method="PATCH" onSubmit={this.onSubmit}>
-                        <div className="form-group"><label htmlFor="current_password">Current Password</label>
-                            <input className="form-control" id="current_password" type="password"
-                            name="current_password" value={this.state.current_password} onChange={this.onChangeCurrentPass} />
-                        </div>
-                        <div className="form-group"><label htmlFor="new_password">New Password</label>
-                            <input className="form-control" id="new_password" type="password"
-                            name="new_password" value={this.state.new_password} onChange={this.onChangeNewPass} />
-                        </div>
-                        <div className="form-group"><label htmlFor="cf_pass">Confirm Password</label>
-                            <input className="form-control" id="cf_pass" type="password"
-                            name="cf_pass" value={this.state.cf_pass} onChange={this.onChangeConfirmPass} />
-                        </div>
-                        <button className="btn btn-primary">Submit</button>
-                </form>
+                <br/>
+                <div className="form-container col-sm-4">
+                    <div className="form-block col-sm-11">
+                        {
+                            this.state.errors.map((err,index) => 
+                            <div className='alert alert-danger' key={index}>{err}</div>)
+                        }
+                        <h2 className="header">Change Password</h2>
+                        <br/>
+                        <form method="PATCH" onSubmit={this.onSubmit}>
+                            <div className="form-group"><label htmlFor="current_password">Current Password</label>
+                                <input className="form-control" id="current_password" type="password"
+                                name="current_password" value={this.state.current_password} onChange={this.onChangeCurrentPass} />
+                            </div>
+                            <div className="form-group"><label htmlFor="new_password">New Password</label>
+                                <input className="form-control" id="new_password" type="password"
+                                name="new_password" value={this.state.new_password} onChange={this.onChangeNewPass} />
+                            </div>
+                            <div className="form-group"><label htmlFor="cf_pass">Confirm Password</label>
+                                <input className="form-control" id="cf_pass" type="password"
+                                name="cf_pass" value={this.state.cf_pass} onChange={this.onChangeConfirmPass} />
+                            </div>
+                            <div className="text-center"><button className="btn btn-info">Commit</button></div>
+                        </form>
+                    </div>
                 </div>
             </div>
         );
