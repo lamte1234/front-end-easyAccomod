@@ -15,15 +15,6 @@ export default function Nav() {
                         <Link to="/users/owner/notifications" className="nav-link text-light">Notifications</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link to="/users/owner/all-post" className="nav-link text-light">All Posts</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link to="/users/owner/post" className="nav-link text-light">Post</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link to="/users/owner/edit" className="nav-link text-light">Edit</Link>
-                    </li>
-                    <li className="navbar-item">
                         <Link to="/users/owner/extend" className="nav-link text-light">Extend</Link>
                     </li>
                 </ul>
