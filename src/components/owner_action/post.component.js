@@ -31,7 +31,7 @@ export default class Post extends Component {
             district: '',
             ward: '',
             street: '',
-            room_type: '',
+            room_type: 'Apartment',
             rented_rate: '', //vnd per month
             area: '',
             bathroom: false,
@@ -261,10 +261,10 @@ export default class Post extends Component {
                                 <h3>Services</h3>
                                 <div className="form-group">
                                     <input className="form-control" id="electricity" type="number" name="street" 
-                                    value={this.state.electricity} onChange={this.onChangeElectricity} placeholder="Electricity Rate" /></div>
+                                    value={this.state.electricity} onChange={this.onChangeElectricity} placeholder="Electricity Rate (VND / kWh)" /></div>
                                 <div className="form-group">
                                     <input className="form-control" id="water" type="number" name="water" 
-                                    value={this.state.water} onChange={this.onChangeWater} placeholder="Water Rate" /></div>
+                                    value={this.state.water} onChange={this.onChangeWater} placeholder="Water Rate (VND / M3)" /></div>
                                 <br/>
                             </div>
                             <div className="col-sm-4">
