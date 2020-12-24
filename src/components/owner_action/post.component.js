@@ -284,7 +284,8 @@ export default class Post extends Component {
                                         :
                                         this.state.time === "4" ?
                                         <p>Pay Fee: 400,000 VND</p>
-                                        : <p></p>
+                                        : 
+                                        <p>Please select from 1 - 4 weeks</p>
                                     }
                                     <div>
                                         <div className="form-group"><h3 htmlFor="image">Images of apartment</h3>
