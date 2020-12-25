@@ -82,7 +82,7 @@ export default class RenterSU extends Component {
                         </ul>
                     </div>
                 </nav>
-                <div className="signup-container col-sm-4">
+                <div className="signup-container col-lg-6 col-sm-8 col-xl-4">
                     <br/>
                     <div className="signup-block col-sm-11">
                         {

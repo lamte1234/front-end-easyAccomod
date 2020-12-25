@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Nav from '../common/renter_nav';
 
-const Post = props => (
-        <tr onClick={() => window.location = `/users/renter/post/${props.post._id}`}>
-            <td>{props.post.title}</td>
-            <td>{props.post.city}</td>
-            <td>{props.post.district}</td>
-            <td>{props.post.ward}</td>
-            <td>{props.post.room_type}</td>
-            <td>{props.post.rented_rate}</td>
-        </tr>
-)
+const Post = props => {
+    return(
+        <div className="row mt-3 post" id="post">
+            <div className="col-sm-5 col-lg-4 img-demo">
+                <Link to={`/users/renter/post/${props.post._id}`}>
+                    <img className="img-demo" src={'http://localhost:5000/' + props.post.image[0]} width="100%" alt="preview"></img>
+                </Link>
+                
+            </div>
+            <div className="col-sm-4 col-lg-5 info">
+                <Link to={`/users/renter/post/${props.post._id}`}><h3>{props.post.title}</h3></Link>
+                <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
+                {props.post.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
+            </div>
+            <div className="col-sm-3 col-lg-3 rate">
+                <p><span className="rented-rate">{props.post.rented_rate} vnd</span>/month</p>
+                <Link to={`/users/renter/post/${props.post._id}`}>
+                    <button className="btn btn-info">View room</button>
+                </Link>
+            </div>
+        </div>
+    )
+}
 
 
 export default class Search extends Component {
@@ -97,6 +111,19 @@ export default class Search extends Component {
             area: e.target.value
         })
     }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/users/renter/explore', {withCredentials: true})
+        .then(res => {
+            console.log(res.data);
+            this.setState({
+                posts: res.data
+            })
+
+        })
+        .catch(err => console.log(err))
+    }
+
     onSubmit(e) {
         e.preventDefault();
         let params= {};
@@ -116,12 +143,18 @@ export default class Search extends Component {
             withCredentials: true
         }
         axios.get('http://localhost:5000/users/renter/search', config)
-        .then(res => {this.setState({
+        .then(res => {
+        this.setState({
+            posts: []
+        })
+        this.setState({
             posts: res.data
         })
         console.log(this.state.posts);
         })
         .catch(err => console.log(err))
+
+        
     }
     
     postList() {
@@ -131,73 +164,84 @@ export default class Search extends Component {
     }
 
     render() {
-        if (this.state.posts.length === 0){
             return(
                 <div>
                     <Nav />
-                    <div className="container">
-                        <br />
-                        <form method='GET' onSubmit={this.onSubmit}>
-                            <div className="form-group"><label htmlFor="city">City</label>
-                                <input className="form-control" id="city" type="text" name="city"
-                                value={this.state.city} onChange={this.onChangeCity} /></div>
-                            <div className="form-group"><label htmlFor="district">District</label>
-                                <input className="form-control" id="district" type="text" name="district"
-                                value={this.state.district} onChange={this.onChangeDistrict} /></div>
-                            <div className="form-group"><label htmlFor="ward">Ward</label>
-                                <input className="form-control" id="ward" type="text" name="ward" 
-                                value={this.state.ward} onChange={this.onChangeWard} /></div>
-                            <div className="form-group"><label htmlFor="room_type">Room Type</label>
-                                <input className="form-control" id="room_type" type="text" name="room_type" 
-                                value={this.state.room_type} onChange={this.onChangeRoomType} /></div>
-                            <div className="form-group"><label htmlFor="rented_rate">Rented Rate Min</label>
-                                <input className="form-control" id="rented_rate" type="number" name="rented_rate" 
-                                value={this.state.rented_rate} onChange={this.onChangeRentedRate} /></div>
-                            <div className="form-group"><label htmlFor="area">Area</label>
-                                <input className="form-control" id="area" type="number" name="area" 
-                                value={this.state.area} onChange={this.onChangeArea} /></div>
-                            <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
-                                <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
-                                value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
-                            <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
-                                <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
-                                value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
-                            <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
-                                <input className="form-control" id="air_con" type="checkbox" name="air_con" 
-                                value={this.state.air_con} onChange={this.onChangeAirCon} /></div>
-                            <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
-                                <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
-                                value={this.state.water_heater} onChange={this.onChangeWaterHeater} /></div>
-                            <button className="btn btn-primary">Search</button>
-                        </form>
+                    <br/>
+                    <form method='GET' onSubmit={this.onSubmit} className="search-bar sticky-top">
+                        <div className="container">
+                            <div className="form-row">
+                                    <div className="form-group col-sm-3">
+                                        <input className="form-control col-sm-11" id="city" type="text" name="city"
+                                        value={this.state.city} onChange={this.onChangeCity} placeholder="City" /></div>
+                                    <div className="form-group col-sm-3">
+                                        <input className="form-control col-sm-11" id="district" type="text" name="district"
+                                        value={this.state.district} onChange={this.onChangeDistrict} placeholder="District" /></div>
+                                    <div className="form-group col-sm-3">
+                                        <input className="form-control col-sm-11" id="ward" type="text" name="ward" 
+                                        value={this.state.ward} onChange={this.onChangeWard} placeholder="Ward" /></div>
+                                </div>
+                                <div className="form-row">
+                                    <div className="form-group col-sm-3">
+                                        <input className="form-control col-sm-11" id="rented_rate" type="number" name="rented_rate" 
+                                        value={this.state.rented_rate} onChange={this.onChangeRentedRate} placeholder="Rented Rate" /></div>
+                                    <div className="form-group col-sm-3">
+                                        <input className="form-control col-sm-11" id="area" type="number" name="area" 
+                                        value={this.state.area} onChange={this.onChangeArea} placeholder="Area" /></div>
+                                    <div className="form-group col-sm-3">
+                                        <select className="form-control col-sm-11" id="room_type" type="text" name="room_type" 
+                                        value={this.state.room_type} onChange={this.onChangeRoomType}>
+                                            <option>Apartment</option>
+                                            <option>Guest House</option>
+                                            <option>Shared Room</option>
+                                            <option>Premium Apartment</option>
+                                            <option>House</option>
+                                        </select>
+                                    </div>
+                                    {/* <div className="form-group col-sm-3">
+                                        <Dropdown>
+                                            <Dropdown.Toggle variant="info" id="dropdown-basic" className="col-sm-11">
+                                                Facilities
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu className="col-sm-11">
+                                                <Dropdown.Item>
+                                                <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
+                                                    <input className="pro-checkbox" id="bathroom" type="checkbox" name="bathroom"
+                                                    value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>
+                                                <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
+                                                    <input className="pro-checkbox" id="kitchen" type="checkbox" name="kitchen" 
+                                                    value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>Something else</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div> */}
+                                    <div className="col-sm-3 text-center">
+                                        <button className="btn btn-info col-sm-8">Search</button>
+                                    </div>
+                                </div>
+                                {/* <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
+                                    <input className="form-control" id="bathroom" type="checkbox" name="bathroom"
+                                    value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
+                                <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
+                                    <input className="form-control" id="kitchen" type="checkbox" name="kitchen" 
+                                    value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
+                                <div className="form-group"><label htmlFor="air_con">Air Conditioner</label>
+                                    <input className="form-control" id="air_con" type="checkbox" name="air_con" 
+                                    value={this.state.air_con} onChange={this.onChangeAirCon} /></div>
+                                <div className="form-group"><label htmlFor="water_heater">Water Heater</label>
+                                    <input className="form-control" id="water_heater" type="checkbox" name="water_heater" 
+                                    value={this.state.water_heater} onChange={this.onChangeWaterHeater} /></div>
+                                <button className="btn btn-info">Search</button> */}
                     </div>
+                </form>
+                <div className="container">
+                    {this.postList()}
                 </div>
+            </div>
             )
         }
-        else if (this.state.posts.length > 0){
-            return(
-                <div>
-                    <Nav />
-                    <div className="container">
-                        <br />
-                        <table className='table table-hover'>
-                            <thead className="thead-light">
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">District</th>
-                                    <th scope="col">Ward</th>
-                                    <th scope="col">Room Type</th>
-                                    <th scope="col">Rented Rate</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.postList()}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            )
-        }
-    }
 }
