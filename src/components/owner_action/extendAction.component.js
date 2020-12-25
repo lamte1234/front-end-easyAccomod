@@ -22,23 +22,43 @@ export default class ExtendAction extends Component {
         })
     }
 
+    validate() {
+        let errors = [];
+
+        if(!this.state.time) { errors.push('Time is required') }
+
+        if(this.state.time && !this.state.time.match(/^[1-4]$/)) {
+            errors.push('Posting time must in range 1-4 weeks.')
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
-        axios.patch('http://localhost:5000/users/owner/extend/'+this.props.match.params.id, {time: this.state.time}, {withCredentials: true})
-        .then(res => {
-            if (res.status === 200 && !res.data.errors){
-                alert ("Extending request has been recorded. Please wait for approval.")
-                window.location.href = ('http://localhost:3000/users/owner/all-post')
-            }
-            if(res.data.errors){
-                this.setState({
-                    errors: res.data.errors
-                })
-            }
-            console.log(res.data);
-        })
-        .catch(err => console.log(err))
+        if(this.validate() === true) {
+            axios.patch('http://localhost:5000/users/owner/extend/'+this.props.match.params.id, {time: this.state.time}, {withCredentials: true})
+            .then(res => {
+                if (res.status === 200 && !res.data.errors){
+                    alert ("Extending request has been recorded. Please wait for approval.")
+                    window.location.href = ('http://localhost:3000/users/owner/all-post')
+                }
+                if(res.data.errors){
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                }
+                console.log(res.data);
+            })
+            .catch(err => console.log(err))
+        }
     }
 
 

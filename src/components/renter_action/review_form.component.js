@@ -11,7 +11,7 @@ export default class ReviewForm extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            star: 0,
+            star: 0, // mean no rating
             review: '',
             star_checked: [false, false, false, false, false],
             errors: []
@@ -43,23 +43,57 @@ export default class ReviewForm extends Component {
         });
     }
 
+    validate() {
+        const review_re = /^[a-zA-Z0-9.\s!#$%&'*+/=?^_`{|}~-]+$/;
+    
+        let errors = [];
+
+        if(!this.state.review) {
+            errors.push('You must add a review')
+        }
+
+        if(this.state.review && !this.state.review.match(review_re)) {
+            errors.push('Invalid review')
+        }
+
+        if(!this.state.star) {
+            errors.push('Warning: You are using an invalid software')
+        }
+
+        if((this.state.star && this.state.star < 0) ||
+            (this.state.star && this.state.star > 5)) {
+            errors.push('Invalid star number')
+        }
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
-        const data = {
-            ...this.state
-        }
-
-        axios.post(`http://localhost:5000/users/renter/review/${this.props.post_id}`, data, {withCredentials: true})
-        .then(res => {
-            console.log(res.data);
-            if(res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
+        if(this.validate() === true) {
+            const data = {
+                ...this.state
             }
-        })
-        .catch(err => console.log(err));
+            delete data.errors;
+            delete data.star_checked;
+
+            axios.post(`http://localhost:5000/users/renter/review/${this.props.post_id}`, data, {withCredentials: true})
+            .then(res => {
+                console.log(res.data);
+                if(res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                }
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     render() {

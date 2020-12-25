@@ -20,24 +20,46 @@ export default class ReportForm extends Component {
         })
     }
 
+    validate() {
+        const comment_re = /^[a-zA-Z0-9.\s!#$%&'*+/=?^_`{|}~-]+$/;
+
+        let errors = [];
+
+        if(!this.state.comment) {errors.push('You must add report details')}
+
+        if(this.state.comment && !this.state.comment.match(comment_re)) {
+            errors.push('Invalid comment');
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
-        const data = {comment: this.state.comment};
+        if (this.validate() === true) {
+            const data = {comment: this.state.comment};
 
-        axios.post(`http://localhost:5000/users/renter/report/${this.props.post_id}`, data, {withCredentials: true})
-        .then(res => {
-            if (res.status === 201){
-                alert ("Your report has been recorded. Thanks for helping us!")
-            }
-            if(res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
-            }
-            console.log(res.data);
-        })
-        .catch(err => console.log(err));
+            axios.post(`http://localhost:5000/users/renter/report/${this.props.post_id}`, data, {withCredentials: true})
+            .then(res => {
+                if (res.status === 201){
+                    alert ("Your report has been recorded. Thanks for helping us!")
+                }
+                if(res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                }
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     render() {

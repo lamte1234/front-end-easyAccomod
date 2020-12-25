@@ -149,41 +149,147 @@ export default class Post extends Component {
         })
     };
 
+    validate() {
+        let errors = [];
+
+        const postString_re = /^[a-zA-Z0-9\s]+$/;
+        const area_re = /^[1-9][0-9]*[,.]{0,1}[0-9]*$/;
+        const money_re = /^[1-9][0-9]*$/;
+
+        // title
+        if (!this.state.title) { errors.push('Title is required.') }
+        if (this.state.title && !this.state.title.match(postString_re)) {
+            errors.push('Title must be text.')
+        }
+        // city
+        if (!this.state.city) { errors.push('City is required.') }
+        if (this.state.city && !this.state.city.match(postString_re)) {
+            errors.push('City must be text.')
+        }
+        // district
+        if (!this.state.district) { errors.push('District is required.') }
+        if (this.state.district && !this.state.district.match(postString_re)) {
+            errors.push('District must be text.')
+        }
+        // ward
+        if (!this.state.ward) { errors.push('Ward is required.') }
+        if (this.state.ward && !this.state.ward.match(postString_re)) {
+            errors.push('Ward must be text.')
+        }
+        // street
+        if (!this.state.street) { errors.push('Street is required.') }
+        if (this.state.street && !this.state.street.match(postString_re)) {
+            errors.push('Street must be text.')
+        }
+        // roomtype
+        if (!this.state.room_type) { errors.push('Room type is required.') }
+        if (this.state.room_type && this.state.room_type !== 'Apartment' &&
+            this.state.room_type !== 'Guest House' && this.state.room_type !== 'Shared Room' &&
+            this.state.room_type !== 'Premium Apartment' && this.state.room_type !== 'House') {
+            errors.push('Room type must be text.')
+        }
+        // rented_rate
+        if (!this.state.rented_rate) { errors.push('Rented rate is required.') }
+        if (this.state.rented_rate && !this.state.rented_rate.match(money_re)) {
+            errors.push('Rented rate must be number.')
+        }
+        // area
+        if (!this.state.area) { errors.push('Area is required.') }
+        if (this.state.area && !this.state.area.match(area_re)) {
+            errors.push('Area must be number.')
+        }
+        //description
+        //bathroom
+        if (this.state.bathroom === undefined) { errors.push('Bathroom is required.') }
+        if ((this.state.bathroom && this.state.bathroom !== true && this.state.bathroom !== false)) {
+            errors.push('Bathroom must be boolean.')
+        }
+        //kitchen
+        if (this.state.kitchen === undefined) { errors.push('Bathroom is required.') }
+        if ((this.state.kitchen && this.state.kitchen !== true && this.state.kitchen !== false)) {
+            errors.push('Kitchen must be boolean.');
+        }
+        //aircon
+        if (this.state.air_con === undefined) { errors.push('Air conditioner is required.') }
+        if ((this.state.air_con && this.state.air_con !== true && this.state.air_con !== false)) {
+            errors.push('Air conditioner must be boolean.')
+        }
+        //waterheater
+        if (this.state.water_heater === undefined) { errors.push('Water heater is required.') }
+        if ((this.state.water_heater && this.state.water_heater !== true && this.state.water_heater !== false)) {
+            errors.push('Water heater must be boolean.')
+        }
+        //service rate
+        //electricity
+        if (!this.state.electricity) { errors.push('Electricity rate is required.') }
+        if (this.state.electricity && !this.state.electricity.match(money_re)) {
+            errors.push('Electricity rate must be number.')
+        }
+        //water
+        if (!this.state.water) { errors.push('Water rate is required.') }
+        if (this.state.water && !this.state.water.match(money_re)) {
+            errors.push('Water rate must be number.')
+        }
+        // posting time
+        if (!this.state.time) { errors.push('Posting time is required.') }
+        if (this.state.time && !this.state.time.match(/^[1-4]$/)) {
+            errors.push('Posting time must in range 1-4 weeks.');
+        }
+         // image
+        if ((this.state.image && this.state.image.length < 3 ) ||
+            (this.state.image && this.state.image.length > 5) ||
+            (!this.state.image)) {
+            errors.push('Must have at least 3 images, max 5 images');
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
-        let data = new FormData();
-        data.set("title",this.state.title);
-        data.set("city",this.state.city);
-        data.set("district",this.state.district);
-        data.set("ward",this.state.ward);
-        data.set("street",this.state.street);
-        data.set("room_type",this.state.room_type);
-        data.set("rented_rate",this.state.rented_rate);
-        data.set("area",this.state.area);
-        data.set("bathroom",this.state.bathroom);
-        data.set("kitchen",this.state.kitchen);
-        data.set("air_con",this.state.air_con);
-        data.set("water_heater",this.state.water_heater);
-        data.set("electricity",this.state.electricity);
-        data.set("water",this.state.water);
-        data.set("time",this.state.time);
-        this.state.image.forEach(img => {
-            data.append('image', img);
-        })
 
-        axios.post('http://localhost:5000/users/owner/post', data, {withCredentials: true}).then(res => {
-            if (res.status === 201){
-                alert ("Successful! Please wait for approval.")
-                window.location.href = ('http://localhost:3000/users/owner/all-post')
-            }
-            if (res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
-            };
+        if(this.validate() === true) {
+            let data = new FormData();
+            data.set("title",this.state.title);
+            data.set("city",this.state.city);
+            data.set("district",this.state.district);
+            data.set("ward",this.state.ward);
+            data.set("street",this.state.street);
+            data.set("room_type",this.state.room_type);
+            data.set("rented_rate",this.state.rented_rate);
+            data.set("area",this.state.area);
+            data.set("bathroom",this.state.bathroom);
+            data.set("kitchen",this.state.kitchen);
+            data.set("air_con",this.state.air_con);
+            data.set("water_heater",this.state.water_heater);
+            data.set("electricity",this.state.electricity);
+            data.set("water",this.state.water);
+            data.set("time",this.state.time);
+            this.state.image.forEach(img => {
+                data.append('image', img);
+            })
 
-        });
-        
+            axios.post('http://localhost:5000/users/owner/post', data, {withCredentials: true})
+            .then(res => {
+                if (res.status === 201){
+                    alert ("Successful! Please wait for approval.")
+                    window.location.href = ('http://localhost:3000/users/owner/all-post')
+                }
+                if (res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                };
+
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     render() {

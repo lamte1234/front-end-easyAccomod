@@ -37,6 +37,44 @@ export default class Login extends Component {
             account_type: e.target.value
         });
     }
+
+    validate() {
+        let errors = [];
+        const email_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const password_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{6,13}$/;
+
+        if(this.state.account_type !== 'renter_account' && 
+            this.state.account_type !== 'owner_account' &&
+            this.state.account_type !== 'admin_account' ){
+            errors.push('Invalid account.')
+        }
+
+        if(!this.state.email){
+            errors.push('Email is required.');
+        }
+    
+        if(this.state.email && !this.state.email.match(email_re)){
+            errors.push('Invalid email.')
+        }
+    
+        if(!this.state.password){
+            errors.push('Password is required.');
+        }
+
+        if(this.state.email && this.state.password && !this.state.password.match(password_re)) {
+            errors.push('Wrong password or email.');
+        }
+        
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -45,25 +83,28 @@ export default class Login extends Component {
             password: this.state.password,
             account_type: this.state.account_type
         };
+        
+        if(this.validate() === true){
+            axios.post('http://localhost:5000/login', user,{withCredentials: true})
+            .then(res => {
+                console.log(res.data);
+                localStorage.setItem('user', res.data.name);
+                localStorage.setItem('user_type', res.data.user_type);
+                if(res.data.wishlist) {
+                    localStorage.setItem('wishlist', res.data.wishlist);
+                }
+                if(res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors 
+                    })
+                };
 
-        axios.post('http://localhost:5000/login', user,{withCredentials: true})
-        .then(res => {
-            console.log(res.data);
-            localStorage.setItem('user', res.data.name);
-            localStorage.setItem('user_type', res.data.user_type);
-            if(res.data.wishlist) {
-                localStorage.setItem('wishlist', res.data.wishlist);
-            }
-            if(res.data.errors) {
-                this.setState({
-                    errors: res.data.errors 
-                })
-            };
-
-            if(res.data.email){
-                window.location = `/users/${res.data.user_type}`;  //handle user page have every thing of user in res.data
-            };
-        });
+                if(res.data.email){
+                    window.location = `/users/${res.data.user_type}`;  //handle user page have every thing of user in res.data
+                };
+            })
+            .catch(err => console.log(err));
+        }
     }
 
 

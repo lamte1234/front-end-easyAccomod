@@ -40,26 +40,55 @@ export default class ChangePass extends Component {
             cf_pass: e.target.value
         });
     }
+
+    validate() {
+        let errors = [];
+        const password_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{6,13}$/;
+
+        if(!this.state.current_password || !this.state.new_password || !this.state.cf_pass) {
+            errors.push('Password is required')
+        }
+
+        if((this.state.current_password && !this.state.current_password.match(password_re)) ||
+            (this.state.new_password && !this.state.new_password.match(password_re)) ||
+            (this.state.cf_pass && !this.state.cf_pass.match(password_re))){
+        errors.push('Password must have 6-13 non-special characters')
+        }
+
+        if (this.state.new_password !== this.state.cf_pass) {
+            errors.push('Password must match');
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
-        axios.patch(`http://localhost:5000/users/${localStorage.getItem('user_type')}/change-password`,{
-            current_password: this.state.current_password,
-            new_password: this.state.new_password,
-            cf_pass: this.state.cf_pass
-        }, {withCredentials: true})
-        .then(res => {
-            if(res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
-            };
-            if(res.status === 200) {
-                window.location = `/users/${localStorage.getItem('user_type')}`;
-            }
-        })
-        .catch(err => console.log(err));
-
+        if(this.validate() === true) {
+            axios.patch(`http://localhost:5000/users/${localStorage.getItem('user_type')}/change-password`,{
+                current_password: this.state.current_password,
+                new_password: this.state.new_password,
+                cf_pass: this.state.cf_pass
+            }, {withCredentials: true})
+            .then(res => {
+                if(res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                };
+                if(res.status === 200) {
+                    window.location = `/users/${localStorage.getItem('user_type')}`;
+                }
+            })
+            .catch(err => console.log(err));
+        }
 
     }
 

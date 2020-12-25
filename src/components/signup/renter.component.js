@@ -42,6 +42,51 @@ export default class RenterSU extends Component {
             cf_pass: e.target.value
         })
     };
+
+    validate() {
+        let errors = [];
+        const email_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const password_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{6,13}$/;
+        const name_re = /^[a-zA-Z0-9.\s!#$%&'*+/=?^_`{|}~-]+$/;
+
+        if (!this.state.email) {
+            errors.push('Email is required.');
+        }
+    
+        if(this.state.email && !this.state.email.match(email_re)){
+            errors.push('Invalid email.');
+        }
+    
+        if (!this.state.name) {
+            errors.push('Name is required.');
+        }
+    
+        if(this.state.name && !this.state.name.match(name_re)){
+            errors.push('Name must be non-special text.')
+        }
+    
+        if (!this.state.password) {
+            errors.push('Password is required.');
+        }
+    
+        if((this.state.password && !this.state.password.match(password_re)) ||
+            (this.state.cf_pass && !this.state.cf_pass.match(password_re))){
+            errors.push('Password must have 6-13 non-special characters')
+        }
+    
+        if (this.state.password !== this.state.cf_pass) {
+            errors.push('Password must match.');
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -52,18 +97,22 @@ export default class RenterSU extends Component {
             cf_pass: this.state.cf_pass
         }
 
-        axios.post('http://localhost:5000/signup/renter', dataRenter).then(res => {
-            console.log(res.data);
-            if (res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
-            };
+        if(this.validate() === true) {
+            axios.post('http://localhost:5000/signup/renter', dataRenter)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                };
 
-            if (res.data.email) {
-                window.location = '/login';  //handle user page have every thing of user in res.data
-            };
-        });
+                if (res.data.email) {
+                    window.location = '/login';  //handle user page have every thing of user in res.data
+                };
+            })
+            .catch(err => console.log(err))
+        }
     };
 
 

@@ -22,9 +22,9 @@ export default class Signup extends Component {
                 <div className="link-signup">
                     <div className="text-center row">
                         <div className="col-sm-6">
-                            <button className="d-block btn btn-outline-light float-right" onClick={() => window.location='/signup/renter'}>For Renter</button></div>
+                            <Link to="/signup/renter"className="d-block btn btn-outline-light float-right" >For Renter</Link></div>
                         <div className="col-sm-6">
-                            <button className="d-block btn btn-outline-light float-left" onClick={() => window.location='/signup/owner'}>For Owner</button></div>
+                            <Link to="/signup/owner" className="d-block btn btn-outline-light float-left" >For Owner</Link></div>
                     </div>   
                 </div>
             </div>

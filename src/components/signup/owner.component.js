@@ -63,6 +63,79 @@ export default class OwnerSU extends Component {
             cf_pass: e.target.value
         })
     };
+
+    validate() {
+        let errors = [];
+        const email_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        const phone_re = /^[0-9]{10}$/;
+        const id_num_re = /^[a-zA-Z0-9]{16}$/;
+        const password_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{6,13}$/;
+        const name_re = /^[a-zA-Z0-9.\s!#$%&'*+/=?^_`{|}~-]+$/;
+        const address_re = /^[a-zA-Z0-9.,\s]+$/;
+
+        if (!this.state.email) {
+            errors.push('Email is required');
+        }
+    
+        if(this.state.email && !this.state.email.match(email_re)){
+            errors.push('Invalid email');
+        }
+        
+        if (!this.state.name) {
+            errors.push('Name is required');
+        }
+    
+        if(this.state.name && !this.state.name.match(name_re)){
+            errors.push('Name must be non-special text.')
+        }
+    
+        if (!this.state.id_card_number) {
+            errors.push('Identificaton number is required');
+        }
+    
+        if(this.state.id_card_number && !this.state.id_card_number.match(id_num_re)){
+            errors.push('Identification number must have 16 normal characters')
+        }
+    
+        if (!this.state.phone) {
+            errors.push('Phone is required');
+        }
+    
+        if(this.state.phone && !this.state.phone.match(phone_re)){
+            errors.push('Phone must have 10 digits');
+        }
+    
+        if (!this.state.address) {
+            errors.push('Address is required');
+        }
+    
+        if(this.state.address && !this.state.address.match(address_re)) {
+            errors.push('Invalid address');
+        }
+    
+        if (!this.state.password) {
+            errors.push('Password is required');
+        }
+    
+        if((this.state.password && !this.state.password.match(password_re)) ||
+            (this.state.cf_pass && !this.state.cf_pass.match(password_re))){
+            errors.push('Password must have 6-13 non-special characters')
+        }
+    
+        if (this.state.password !== this.state.cf_pass) {
+            errors.push('Password must match');
+        }
+
+        if(errors.length) {
+            this.setState({
+                errors: errors
+            })
+            return false;
+        }
+        else {return true};
+
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -76,18 +149,22 @@ export default class OwnerSU extends Component {
             cf_pass: this.state.cf_pass
         }
 
-        axios.post('http://localhost:5000/signup/owner', dataRenter).then(res => {
-            console.log(res.data);
-            if (res.data.errors) {
-                this.setState({
-                    errors: res.data.errors
-                })
-            };
+        if(this.validate() === true) {
+            axios.post('http://localhost:5000/signup/owner', dataRenter)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.errors) {
+                    this.setState({
+                        errors: res.data.errors
+                    })
+                };
 
-            if (res.data.email) {
-                window.location = '/login';  //handle user page have every thing of user in res.data
-            };
-        });
+                if (res.data.email) {
+                    window.location = '/login';  //handle user page have every thing of user in res.data
+                };
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     render() {

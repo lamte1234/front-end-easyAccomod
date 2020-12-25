@@ -35,7 +35,7 @@ export default function Nav() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item><Link to="/users/change-password" className="nav-link">Change Password</Link></Dropdown.Item>
+                            <Link to="/users/change-password" className="nav-link">Change Password</Link>
                             <Dropdown.Item><LogOut /></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
