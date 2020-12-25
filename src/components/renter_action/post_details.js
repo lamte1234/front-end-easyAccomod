@@ -157,23 +157,15 @@ export default class PostDetail extends Component {
                         <div className="col-sm-4">
                             <h2>{this.state.title}</h2>
                             <p><span className="rented-rate">{this.state.rented_rate} VND</span>/Month</p>
-                            <div className="form-row">
-                                <h5>Status: </h5>
-                                {this.state.status ? <h5 className="text-success">Available</h5>:<h5 className="text-danger">Rented</h5>}
-                            </div>
+                            {this.state.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
                             {!this.state.addWishlistSuccess ? 
                             <button className="btn btn-info" onClick={this.addToWishlist}>Add to Wish-list</button> 
                             : <p className="text-success">In Wishlist</p>}
                             <br/>
+                            <br/>
                             <h4>Popular!</h4>
-                            <div className="form-row">
-                                <i className="fas fa-eye"></i>
-                                <p>This post has {this.state.views} views</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-heart"></i>
-                                <p>Have {this.state.likes} people save this post to their wishlist</p>
-                            </div>
+                            <p>This post has {this.state.views} views</p>
+                            <p>Have {this.state.likes} people save this property to their wishlist</p>
                         </div>
                     </div>
                     <br/>
@@ -181,39 +173,16 @@ export default class PostDetail extends Component {
                     <div className="row">
                         <div className="col-sm-6">
                             <h2>Property details</h2>
-                            <br/>
-                            <div className="form-row">
-                                <i className="fas fa-map-marked-alt"></i>
-                                <p>Address: {this.state.street}, {this.state.ward}, {this.state.district}, {this.state.city}</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-home"></i>
-                                <p>Room type: {this.state.room_type}</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-warehouse"></i>
-                                <p>Area: {this.state.area} M2</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-couch"></i>
-                                <p>Facilities: {this.state.bathroom ? <span>bathroom</span>:<span></span>} {this.state.kitchen ? <span>, kitchen</span>:<span></span>} {this.state.air_con ? <span>, air conditioner</span>:<span></span>} {this.state.water_heater ? <span>, water heater</span>:<span></span>}</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-credit-card"></i>
-                                <p>Servies: Electricity rate: {this.state.electricity}VND/KWH, water rate: {this.state.water}VND/M3</p>
-                            </div>
+                            <p>Address: {this.state.street}, {this.state.ward}, {this.state.district}, {this.state.city}</p>
+                            <p>Room type: {this.state.room_type}</p>
+                            <p>Area: {this.state.area} M2</p>
+                            <p>Facilities: {this.state.bathroom ? <span>bathroom</span>:<span></span>} {this.state.kitchen ? <span>, kitchen</span>:<span></span>} {this.state.air_con ? <span>, air conditioner</span>:<span></span>} {this.state.water_heater ? <span>, water heater</span>:<span></span>}</p>
+                            <p>Servies: Electricity rate: {this.state.electricity}VND/KWH, water rate: {this.state.water}VND/M3</p>
                         </div>
                         <div className="col-sm-6">
                             <h2>Contact Infomation</h2>
-                            <br/>
-                            <div className="form-row">
-                                <i className="fas fa-user-tag"></i>
-                                <p>Name of owner: {this.state.owner_name}</p>
-                            </div>
-                            <div className="form-row">
-                                <i className="fas fa-phone"></i>
-                                <p>Phone number: {this.state.owner_phone}</p>
-                            </div>
+                            <p>Name of owner: {this.state.owner_name}</p>
+                            <p>Phone number: {this.state.owner_phone}</p>
                         </div>
                     </div>
                     <h3>Review</h3>

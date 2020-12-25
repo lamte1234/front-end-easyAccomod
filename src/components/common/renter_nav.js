@@ -1,30 +1,37 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import LogOut from '../logout.component';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const username = localStorage.getItem('user');
-
-export default function NavBar() {
+export default function Nav() {
     return(
-        <Navbar collapseOnSelect expand="lg" className="user-nav" variant="dark">
-            <div className="container">
-                <Navbar.Brand><Link to="/users/renter" className="navbar-brand text-light">EasyAccomod</Link></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="/users/renter/wishlist" className="text-light">WishList</Nav.Link>
-                    </Nav>
-                    <Nav>
-                        <NavDropdown title={username} id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="/users/change-password">Change password</NavDropdown.Item>
-                            <NavDropdown.Item ><LogOut/></NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-            </div>
-        </Navbar>  
+                <nav className="navbar navbar-dark navbar-expand-lg user-nav">
+                    <div className="container">
+                        <Link to="/users/renter" className="navbar-brand">EasyAccomod</Link>
+                        <div className="collpase navbar-collapse">
+                            <ul className="navbar-nav mr-auto">
+                                <li className="navbar-item">
+                                    <Link to="/users/renter/search" className="nav-link text-light">Search</Link>
+                                </li>
+                                <li className="navbar-item">
+                                    <Link to="/users/renter/wishlist" className="nav-link text-light">Wish-list</Link>
+                                </li>
+                            </ul>
+                            <div className="navbar-item text-light nav-link">Hi, {username}</div>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="info" id="dropdown-menu">
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item><Link to="/users/change-password" className="nav-link">Change Password</Link></Dropdown.Item>
+                                    <Dropdown.Item><LogOut /></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
+                    </div>
+                    
+                </nav>
+        
     );
 }

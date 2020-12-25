@@ -22,7 +22,7 @@ export default class LogOut extends Component {
 
     render() {
         return(
-                <Link to="/login" className="" onClick={this.logout}>Logout</Link>
+                <Link to="/login" className="nav-link" onClick={this.logout}>Logout</Link>
         )
     }
 }

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Post = props => {
     return(
-    <div className="row mt-3 post" id="post">
-        <div className="col-sm-4 img-demo picture">
+    <div className="row mt-3 post">
+        <div className="col-sm-4 img-demo">
             <Link to={`/users/renter/post/${props.post._id}`}>
                 <img className="img-demo" src={'http://localhost:5000/' + props.post.image[0]} width="100%" alt="preview"></img>
             </Link>
