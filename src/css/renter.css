@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     height: 100%;
+    font-family: inherit;
   }
 body,html {
     height: 100%;
@@ -110,6 +111,10 @@ p {
     margin-right: 10px;
 }
 
+.fab {
+    font-size: 1.75em;
+}
+
 .newfeed {
     display: none;
 }
@@ -122,6 +127,11 @@ p {
 
 .user-nav {
     z-index: 1001;
+}
+
+footer {
+    padding: 1.5em;
+    top: 100vh
 }
 
 @media (max-width: 576px) {
@@ -141,10 +151,22 @@ p {
     .search-bar {
         display: none;
     }
+    .introduce {
+        max-width: 60% !important;
+    }
+    .contact {
+        max-width: 30%;
+    }
+    .space {
+        max-width: 0%;
+    }
 }
 
 @media (min-width: 576px) {
     body{font-size: 12px;}
+    .introduce {
+        max-width: 60% !important;
+    }
 }
 
 @media (min-width: 768px) {
@@ -156,6 +178,15 @@ p {
 @media (max-width: 768px) {
     .facilities label {
         max-width: 50% !important;
+    }
+    .face {
+        max-width: 50%;
+    }
+    .ins {
+        max-width: 25%;
+    }
+    .youtube {
+        max-width: 25%;
     }
 }
 
@@ -216,4 +247,10 @@ h4 {
 
 a:hover {
     text-decoration: none;
+}
+
+.logo {
+    width: 2em;
+    height: 2em;
+    margin-right: 0.2em;
 }

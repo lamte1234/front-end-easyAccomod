@@ -6,6 +6,7 @@ import 'react-awesome-slider/dist/styles.css';
 import Nav from '../common/renter_nav';
 import ReviewForm from './review_form.component';
 import ReportForm from './report_form.component';
+import Footer from '../common/footer';
 
 
 const Star = (star) => {
@@ -226,6 +227,7 @@ export default class PostDetail extends Component {
                     <ReportForm post_id={this.state.id}></ReportForm>
                     <br />
                 </div>
+                <Footer/>
             </div>
         )
     }
