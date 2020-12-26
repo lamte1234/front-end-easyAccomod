@@ -1,36 +1,30 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import LogOut from '../logout.component';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const username = localStorage.getItem('user')
-export default function Nav() {
+export default function NavBar() {
     return(
-    <nav className="navbar navbar-dark bg-primary navbar-expand-lg user-nav">
+        <Navbar collapseOnSelect expand="lg" className="user-nav" variant="dark">
         <div className="container">
-            <Link to="/users/owner" className="navbar-brand">EasyAccomod</Link>
-            <div className="collpase navbar-collapse">
-                <ul className="navbar-nav mr-auto">
-                    <li className="navbar-item">
-                        <Link to="/users/owner/notifications" className="nav-link text-light">Notifications</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link to="/users/owner/extend" className="nav-link text-light">Extend</Link>
-                    </li>
-                </ul>
-                <div className="navbar-item text-light nav-link">Hi, {username}</div>
-                <Dropdown>
-                    <Dropdown.Toggle variant="info" id="dropdown-menu">
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Link to="/users/change-password" className="nav-link">Change Password</Link>
-                        <Dropdown.Item><LogOut /></Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
+            <Navbar.Brand><Link to="/users/owner" className="navbar-brand text-light">EasyAccomod</Link></Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                    <Link to="/users/owner/notifications" className="nav-link text-light">Notifications</Link>
+                    <Link to="/users/owner/extend" className="nav-link text-light">Extend</Link>
+                </Nav>
+                <Nav>
+                    <NavDropdown title={username} id="collasible-nav-dropdown">
+                        <NavDropdown.Item><Link to="/users/change-password" className="nav-link text-dark">Change Password</Link></NavDropdown.Item>
+                        <NavDropdown.Item ><LogOut/></NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+            </Navbar.Collapse>
         </div>
-        
-    </nav>
+    </Navbar> 
     );
 }

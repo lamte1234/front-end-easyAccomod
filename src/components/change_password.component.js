@@ -99,7 +99,7 @@ export default class ChangePass extends Component {
                 <Nav />
                 <br />
                 <br/>
-                <div className="form-container col-sm-4">
+                <div className="form-container col-lg-6 col-sm-8 col-xl-4">
                     <div className="form-block col-sm-11">
                         {
                             this.state.errors.map((err,index) => 

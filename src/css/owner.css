@@ -20,12 +20,28 @@ nav.user-nav {
 thead {
     border-bottom: 5px solid #23a6d5;
 }
-thead tr th {
-    color: #23a6d5;
-}
 
 .pro-checkbox {
     width: 20px;
     height: 20px;
     float: right;
+}
+
+@media (max-width: 1080px) {
+    .pro-checkbox {
+        width: 15px;
+        height: 15px;
+    }
+    table {
+        table-layout: fixed;
+    }
+}
+
+thead tr th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+thead tr th:hover {
+    overflow: visible;
 }

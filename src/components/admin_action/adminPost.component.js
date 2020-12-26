@@ -51,7 +51,7 @@ export default class ApprovePost extends Component {
                     <h3>List of Posts</h3>
                     <hr />
                     <table className="table table-bordered table-hover">
-                        <thead>
+                        <thead  className="thead-light">
                             <tr>
                                 <th>Title</th>
                                 <th>City</th>

@@ -123,7 +123,7 @@ export default class Login extends Component {
                         </ul>
                     </div>
                 </nav>
-                <div className="login-container col-sm-4">
+                <div className="login-container col-lg-6 col-sm-8 col-xl-4">
                     <div className="login-block col-sm-11">
                         <br />
                         {

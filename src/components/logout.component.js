@@ -19,7 +19,7 @@ export default class LogOut extends Component {
     render() {
         return(
                 // eslint-disable-next-line
-                <a className="nav-link" onClick={this.logout}>Logout</a>
+                <a className="logout text-dark nav-link" onClick={this.logout}>Logout</a>
         )
     }
 }
