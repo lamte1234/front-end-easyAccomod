@@ -28,13 +28,13 @@ body,html {
 
 h1.slogan {
     position: relative;
-    font-size: 60px;
+    font-size: 3.75em;
     text-align: center;
     top: 30%;
 }
 p.content {
     position: relative;
-    font-size: 40px;
+    font-size: 2.5em;
     text-align: center;
     top: 30%;
 }

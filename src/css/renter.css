@@ -55,15 +55,28 @@ nav.user-nav {
     margin-right: 8px;
 }
 .star:before {
-   content: "\2605";
-   position: absolute;
-   visibility:visible;
-   color: yellow;
+    content: "\2606";
+    position: absolute;
+    visibility:visible;
+    color: yellow;
 }
 .star:checked:before {
-   content: "\2606";
-   position: absolute;
-   color: yellow;
+    content: "\2605";
+    position: absolute;
+    color: yellow;
+}
+
+.star-rating {
+    visibility:hidden;
+    font-size:20px;
+    cursor:pointer;
+    margin-right: 8px;
+}
+.star-rating:before {
+    content: "\2605";
+    position: absolute;
+    visibility:visible;
+    color: yellow;
 }
 
 .rating, .form-row {
@@ -160,6 +173,10 @@ p {
 
 @media (min-width: 1200px) {
     body{font-size: 16px;}
+}
+
+h1 {
+    font-size: 2em;
 }
 
 h3 {

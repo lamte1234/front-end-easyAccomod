@@ -182,7 +182,7 @@ export default class OwnerSU extends Component {
                         </ul>
                     </div>
                 </nav>
-                <div className="signup-container col-sm-4">
+                <div className="signup-container col-md-6 col-lg-5 col-sm-7 col-xl-4">
                     <div className="signup-block col-sm-11">
                         {
                             this.state.errors.map((err,index) => 

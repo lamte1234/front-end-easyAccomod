@@ -20,7 +20,7 @@ const Star = (star) => {
     }
     return (
         arr.map((elem, index) => {
-            if(elem === true) {return <span key={index} className="star">X </span>} // replace with bright star image
+            if(elem === true) {return <span key={index} className="star-rating">X </span>} // replace with bright star image
             else {return <span key={index}>O </span>}
         })
     )
