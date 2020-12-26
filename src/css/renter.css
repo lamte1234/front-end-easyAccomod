@@ -196,3 +196,7 @@ h4 {
 .btn {
     font-size: 1em;
 }
+
+a:hover {
+    text-decoration: none;
+}

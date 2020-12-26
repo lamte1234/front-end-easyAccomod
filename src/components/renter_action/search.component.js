@@ -224,32 +224,6 @@ export default class Search extends Component {
                                     <div className="col-sm-2 text-center">
                                         <button className="btn btn-info col-sm-10">Search</button>
                                     </div>
-                                    
-                                    
-                                    
-                                        
-                                    {/* <div className="form-group col-sm-3">
-                                        <Dropdown>
-                                            <Dropdown.Toggle variant="info" id="dropdown-basic" className="col-sm-11">
-                                                Facilities
-                                            </Dropdown.Toggle>
-
-                                            <Dropdown.Menu className="col-sm-11">
-                                                <Dropdown.Item>
-                                                <div className="form-group"><label htmlFor="bathroom">Bathroom</label>
-                                                    <input className="pro-checkbox" id="bathroom" type="checkbox" name="bathroom"
-                                                    value={this.state.bathroom} onChange={this.onChangeBathroom} /></div>
-                                                </Dropdown.Item>
-                                                <Dropdown.Item>
-                                                <div className="form-group"><label htmlFor="kitchen">Kitchen</label>
-                                                    <input className="pro-checkbox" id="kitchen" type="checkbox" name="kitchen" 
-                                                    value={this.state.kitchen} onChange={this.onChangeKitchen} /></div>
-                                                </Dropdown.Item>
-                                                <Dropdown.Item>Something else</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </div> */}
-                                    
                                 </div>
                                 
                     </div>

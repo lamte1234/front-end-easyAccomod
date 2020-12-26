@@ -9,18 +9,18 @@ import Nav from '../common/renter_nav';
 const Post = props => {
     return(
     <div className="row mt-3 post">
-        <div className="col-sm-4 img-demo">
+        <div className="col-sm-5 col-lg-4 img-demo">
             <Link to={`/users/renter/post/${props.post._id}`}>
                 <img className="img-demo" src={'http://localhost:5000/' + props.post.image[0]} width="100%" alt="preview"></img>
             </Link>
             
         </div>
-        <div className="col-sm-5 info">
+        <div className="col-sm-4 col-lg-5 info">
             <Link to={`/users/renter/post/${props.post._id}`}><h3>{props.post.title}</h3></Link>
             <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
             {props.post.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
         </div>
-        <div className="col-sm-3 rate">
+        <div className="col-sm-3 col-lg-3 rate">
             <p><span className="rented-rate">{props.post.rented_rate} vnd</span>/month</p>
             <Link to={`/users/renter/post/${props.post._id}`}>
                 <button className="btn btn-info">View room</button>
@@ -59,6 +59,8 @@ export default class Wishlist extends Component {
             <div>
                 <Nav />
                 <div className="container">
+                    <br/>
+                    <h3>Wish List</h3>
                     {this.postList()}
                 </div>
             </div>

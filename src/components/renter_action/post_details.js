@@ -144,6 +144,7 @@ export default class PostDetail extends Component {
                 <Nav />
                 <div className='container'>
                     <br/>
+                    <br/>
                     <div className="row">
                         <div className="col-sm-8 image">
                             <AwesomeSlider>
@@ -164,6 +165,7 @@ export default class PostDetail extends Component {
                             {!this.state.addWishlistSuccess ? 
                             <button className="btn btn-info" onClick={this.addToWishlist}>Add to Wish-list</button> 
                             : <p className="text-success">In Wishlist</p>}
+                            <br/>
                             <br/>
                             <h4>Popular!</h4>
                             <div className="form-row">
