@@ -157,7 +157,7 @@ export default class PostDetail extends Component {
                             </AwesomeSlider>
                         </div>
                         <div className="col-sm-4">
-                            <h2>{this.state.title}</h2>
+                            <h2 className="text-capitalize">{this.state.title}</h2>
                             <p><span className="rented-rate">{this.state.rented_rate} VND</span>/Month</p>
                             <div className="form-row">
                                 <h5>Status: </h5>

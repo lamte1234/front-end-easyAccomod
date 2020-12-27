@@ -145,30 +145,36 @@ export default class OwnerChangeInfo extends Component {
             <div>
                 <Nav />
                 <br />
-                <div className="container">
-                {
-                    this.state.errors.map((err, index) =>
-                        <div className='alert alert-danger' key={index}>{err}</div>)
-                }
-                    <form method="PUT" onSubmit={this.onSubmit}>
-                        <div className="form-group text-light">
+                <br/>
+                <div className="form-container col-md-6 col-lg-5 col-sm-7 col-xl-4">
+                    <br/>
+                    <div className="form-block col-sm-11">
+                        {
+                            this.state.errors.map((err,index) => 
+                            <div className='alert alert-danger' key={index}>{err}</div>)
+                        }
+                        <h2 className="text-center">Change Account Infomation</h2>
+                        <br/>
+                        <form method="PUT" onSubmit={this.onSubmit}>
+                        <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input className="form-control" id="name" type="text" name="name"
                             value={this.state.name} onChange={this.onChangeName} placeholder="Name" /></div>
-                        <div className="form-group text-light">
+                        <div className="form-group">
                         <label htmlFor="name">Identification Number</label>
                             <input className="form-control" id="id_card_number" type="text" name="id_card_number"
                             value={this.state.id_card_number} onChange={this.onChangeIDCard} placeholder="Identification Number" /></div>
-                        <div className="form-group text-light">
+                        <div className="form-group">
                         <label htmlFor="name">Phone</label>
                             <input className="form-control" id="phone" type="number" name="phone" 
                             value={this.state.phone} onChange={this.onChangePhone} placeholder="Phone Number" /></div>
-                        <div className="form-group text-light">
+                        <div className="form-group">
                         <label htmlFor="name">Address</label>
                             <input className="form-control" id="address" type="text" name="address" 
                             value={this.state.address} onChange={this.onChangeAddress} placeholder="Address" /></div>
-                            <button className="btn btn-outline-light">Update</button>
+                        <div className="text-center"><button className="btn btn-info">Update</button></div>
                     </form>
+                    </div>
                 </div>
             </div>
         )

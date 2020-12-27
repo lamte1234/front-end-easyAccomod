@@ -169,8 +169,8 @@ export default class OwnerSU extends Component {
 
     render() {
         return (
-            <div className="signup-layout">
-                <nav className="navbar navbar-dark navbar-expand-lg">
+            <div className="">
+                <nav className="navbar navbar-dark navbar-expand-lg user-nav">
                     <div className="container">
                         <Link to="/" className="navbar-brand">EasyAccomod</Link>
                         <ul className="navbar-nav navbar-right">
@@ -182,37 +182,39 @@ export default class OwnerSU extends Component {
                         </ul>
                     </div>
                 </nav>
+                <br/>
+                <br/>
                 <div className="signup-container col-md-6 col-lg-5 col-sm-7 col-xl-4">
                     <div className="signup-block col-sm-11">
                         {
                             this.state.errors.map((err,index) => 
                             <div className='alert alert-danger' key={index}>{err}</div>)
                         }
-                        <h2 className="text-light signup">Create Account</h2>
+                        <h2 className="signup">Create Account</h2>
                         <br/>
                         <form action="/signup/owner" method="POST" onSubmit={this.onSubmit}>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="email" type="email" name="email" 
                                 value={this.state.email} onChange={this.onChangeEmail} placeholder="Email" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="name" type="text" name="name"
                                 value={this.state.name} onChange={this.onChangeName} placeholder="Name" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="id_card_number" type="text" name="id_card_number"
                                 value={this.state.id_card_number} onChange={this.onChangeIDCard} placeholder="Identification Number" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="phone" type="number" name="phone" 
                                 value={this.state.phone} onChange={this.onChangePhone} placeholder="Phone Number" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="address" type="text" name="address" 
                                 value={this.state.address} onChange={this.onChangeAddress} placeholder="Address" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="password" type="password" name="password" 
                                 value={this.state.password} onChange={this.onChangePassword} placeholder="Password" /></div>
-                            <div className="form-group text-light">
+                            <div className="form-group">
                                 <input className="form-control" id="cf_pass" type="password" name="cf_pass" 
                                 value={this.state.cf_pass} onChange={this.onChangeCfPass} placeholder="Confirm Password" /></div>
-                            <div className="text-center"><button className="btn btn-outline-light">Sign Up</button></div>
+                            <div className="text-center"><button className="btn btn-info">Sign Up</button></div>
                         </form>
                     </div>
                 </div>

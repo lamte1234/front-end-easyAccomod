@@ -16,7 +16,7 @@ const Post = props => {
                 
             </div>
             <div className="col-sm-4 col-lg-5 info">
-                <Link to={`/users/renter/post/${props.post._id}`}><h3>{props.post.title}</h3></Link>
+                <Link to={`/users/renter/post/${props.post._id}`}><h3 className="text-capitalize">{props.post.title}</h3></Link>
                 <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
                 {props.post.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
             </div>
@@ -167,7 +167,7 @@ export default class Search extends Component {
 
     render() {
             return(
-                <div>
+                <div className="">
                     <Nav />
                     <br/>
                     <form method='GET' onSubmit={this.onSubmit} className="search-bar">

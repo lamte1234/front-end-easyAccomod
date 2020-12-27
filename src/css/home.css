@@ -13,7 +13,7 @@ body,html {
     animation: gradient 15s ease infinite;
     height: 100%;  */
     min-height: 100%;
-    background-image: url("http://localhost:5000/uploads/background.jpg");
+    background-image: url("https://images.unsplash.com/photo-1505796215109-a97d9dd14561?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }

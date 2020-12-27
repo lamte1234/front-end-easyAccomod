@@ -110,8 +110,8 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="login-layout">
-                <nav className="navbar navbar-dark navbar-expand-lg">
+            <div className="">
+                <nav className="navbar navbar-dark navbar-expand-lg user-nav">
                     <div className="container">
                         <Link to="/" className="navbar-brand">EasyAccomod</Link>
                         <ul className="navbar-nav navbar-right">
@@ -123,6 +123,8 @@ export default class Login extends Component {
                         </ul>
                     </div>
                 </nav>
+                <br/>
+                <br/>
                 <div className="login-container col-md-6 col-lg-5 col-sm-7 col-xl-4">
                     <div className="login-block col-sm-11">
                         <br />
@@ -130,23 +132,23 @@ export default class Login extends Component {
                             this.state.errors.map((err,index) => 
                             <div className='alert alert-danger' key={index}>{err}</div>)
                         }
-                        <h2 className="text-light login">Login</h2>
+                        <h2 className="login">Login</h2>
                         <form action="/login" method="POST" onSubmit={this.onSubmit}>
-                            <div className="form-group text-light"><label htmlFor="email">Email</label>
+                            <div className="form-group"><label htmlFor="email">Email</label>
                                 <input className="form-control" id="email" type="email"
                                 name="email" value={this.state.email} onChange={this.onChangeEmail} />
                             </div>
-                            <div className="form-group text-light"><label htmlFor="password">Password</label>
+                            <div className="form-group"><label htmlFor="password">Password</label>
                                 <input className="form-control " id="password" type="password"
                                 name="password" value={this.state.password} onChange={this.onChangePassword} />
                             </div>
-                            <div className="form-group  text-light"> <label htmlFor="account_type">Account Type</label>
+                            <div className="form-group"> <label htmlFor="account_type">Account Type</label>
                                 <select className="form-control" id="account_type" name="account_type"
                                 value={this.state.account_type} onChange={this.onChangeAccountType}>
                                     <option value="owner_account">Owner</option>
                                     <option value="renter_account">Renter</option>
                                     <option value="admin_account">Admin</option></select></div>
-                            <div className="text-center"><button className="btn btn-outline-light">Login</button></div>
+                            <div className="text-center"><button className="btn btn-info">Login</button></div>
                             
                         </form>
                     </div>

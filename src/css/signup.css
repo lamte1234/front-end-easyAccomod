@@ -6,6 +6,11 @@
 body,html {
     height: 100%;
 }
+
+nav.user-nav {
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+}
+
 .signup-layout {
     background: linear-gradient(-45deg, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
@@ -15,7 +20,7 @@ body,html {
 
 .signup-container {
     top: 10%;
-    border: 2px solid #ffffff;
+    border: 2px solid black;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
