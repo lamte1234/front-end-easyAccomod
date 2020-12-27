@@ -139,7 +139,7 @@ export default class OwnerSU extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const dataRenter = {
+        const dataOwner = {
             email: this.state.email,
             name: this.state.name,
             id_card_number: this.state.id_card_number,
@@ -150,7 +150,7 @@ export default class OwnerSU extends Component {
         }
 
         if(this.validate() === true) {
-            axios.post('http://localhost:5000/signup/owner', dataRenter)
+            axios.post('http://localhost:5000/signup/owner', dataOwner)
             .then(res => {
                 console.log(res.data);
                 if (res.data.errors) {

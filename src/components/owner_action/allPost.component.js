@@ -32,7 +32,6 @@ export default class AllPost extends Component {
             posts: []
         }
 
-        // this.changeStatus = this.changeStatus.bind(this);
     }
 
 
@@ -43,7 +42,13 @@ export default class AllPost extends Component {
                 posts: res.data
             })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            if(err.response.status === 401) {
+                console.log(err.response.data);
+                alert('You do not have permission to do this request');
+            }
+            else {console.log(err)}
+        });
     }
 
     changeStatus(id) {

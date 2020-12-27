@@ -24,6 +24,7 @@ import EditPost from './components/owner_action/editPost.component';
 import Extend from './components/owner_action/extend.component';
 import ExtendAction from './components/owner_action/extendAction.component';
 import OwnerNotification from './components/owner_action/notifications.component';
+import OwnerChangeInfo from './components/owner_action/change_info.component';
 
 import AdminAcc from './components/admin_action/adminAccount.component';
 import AdminPost from './components/admin_action/adminPost.component';
@@ -31,6 +32,7 @@ import AdminPostDetail from './components/admin_action/approvePost.component';
 import EditAcc from './components/admin_action/approveEditAcc.component';
 import AdminReport from './components/admin_action/adminReport.component';
 import AdminNotifications from './components/admin_action/notifications.component';
+
 
 
 function App() {
@@ -72,6 +74,7 @@ function App() {
         <Route path="/users/owner/extend" exact component={Extend}></Route>
         <Route path="/users/owner/extend/:id" exact component={ExtendAction}></Route>
         <Route path="/users/owner/notifications" exact component={OwnerNotification}></Route>
+        <Route path="/users/owner/account" exact component={OwnerChangeInfo}></Route>
         <Route path='/users/change-password' exact component={ChangePass}></Route>
         <Redirect to='/users/owner'></Redirect>
       </Switch>
@@ -90,7 +93,7 @@ function App() {
         <Redirect to='/users/admin'></Redirect>
       </Switch>
       :
-      <Redirect to="/login"></Redirect>
+      <Redirect to="/"></Redirect>
       }
     </Router>
   );

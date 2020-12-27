@@ -97,10 +97,14 @@ nav.user-nav {
     width: 60px;
     height: 60px;
     margin-right: 10px;
+    margin-bottom: 5px;
 }
-.user-avatar {
+.user_avatar {
     width: 100%;
     height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 50%;
 }
 
 p {

@@ -32,7 +32,13 @@ export default class OwnerNotification extends Component {
                 notifications: res.data
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            if(err.response.status === 401) {
+                console.log(err.response.data);
+                alert('You do not have permission to do this request');
+            }
+            else {console.log(err)}
+        })
     }
 
     clear(id) {

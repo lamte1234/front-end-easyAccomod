@@ -9,7 +9,7 @@ export default function Footer(){
                 <div className="row import {Link} from 'react-router-dom'; ">
                     <div className="col-sm-6 col-md-5 col-lg-4 introduce">
                         <div className="row">
-                            <img src="../../../home.ico" className="logo"/>
+                            <img src="../../../home.ico" alt="logo" className="logo"/>
                             <Link to={`/users/${user_type}`} className=""><h3>EasyAccomod</h3></Link>
                         </div>
                         <p>Select the best student accommodation, providing safe and cozy living experience</p>

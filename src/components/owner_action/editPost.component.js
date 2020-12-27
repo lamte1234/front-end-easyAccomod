@@ -276,7 +276,13 @@ export default class Post extends Component {
                     window.location.href = ('http://localhost:3000/users/owner/all-post')
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                if(err.response.status === 401) {
+                    console.log(err.response.data);
+                    alert('You do not have permission to do this request');
+                }
+                else {console.log(err)}
+            })
         }
     }
 

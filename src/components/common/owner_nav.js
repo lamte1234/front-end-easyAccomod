@@ -20,6 +20,7 @@ export default function NavBar() {
                 <Nav>
                     <NavDropdown title={username} id="collasible-nav-dropdown">
                         <NavDropdown.Item><Link to="/users/change-password" className="nav-link text-dark">Change Password</Link></NavDropdown.Item>
+                        <NavDropdown.Item><Link to="/users/owner/account" className="nav-link text-dark">Change Infomation</Link></NavDropdown.Item>
                         <NavDropdown.Item ><LogOut/></NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

@@ -85,12 +85,15 @@ export default class ReviewForm extends Component {
 
             axios.post(`http://localhost:5000/users/renter/review/${this.props.post_id}`, data, {withCredentials: true})
             .then(res => {
-                console.log(res.data);
+                if (res.status === 201){
+                    window.location.reload();
+                }
                 if(res.data.errors) {
                     this.setState({
                         errors: res.data.errors
                     })
                 }
+
             })
             .catch(err => console.log(err));
         }

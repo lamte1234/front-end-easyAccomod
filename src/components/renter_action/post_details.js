@@ -31,7 +31,7 @@ const Review = props => (
 
     <div className="review form-row">
         <div className="avatar">
-            <img  className="user_avatar" src={'https://picsum.photos/200'} width="100%" alt="user-avatar"></img>
+            <img  className="user_avatar" src={'https://picsum.photos/seed/'+ Math.random() +'/200'} width="100%" alt="user-avatar"></img>
         </div>
         <div>
             <h6 className="renter_name">{props.review.renter_id.name}</h6>
