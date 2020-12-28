@@ -44,7 +44,6 @@ export default class AllPost extends Component {
         })
         .catch(err => {
             if(err.response.status === 401) {
-                console.log(err.response.data);
                 alert('You do not have permission to do this request');
             }
             else {console.log(err)}
@@ -53,8 +52,12 @@ export default class AllPost extends Component {
 
     changeStatus(id) {
         axios.patch(`http://localhost:5000/users/owner/change-status/${id}`,{},{withCredentials: true})
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
+        .catch(err => {
+            if(err.response.status === 401) {
+                alert('You do not have permission to do this request');
+            }
+            else {console.log(err)}
+        });
 
     }
 

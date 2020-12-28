@@ -32,7 +32,13 @@ export default class OwnerChangeInfo extends Component {
                 address: res.data.address
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            if(err.response.status === 401) {
+                console.log(err.response.data);
+                alert('You do not have permission to do this request');
+            }
+            else {console.log(err)}
+        })
     }
 
     onChangeName(e) {
