@@ -52,7 +52,7 @@ export default class ChangePass extends Component {
         if((this.state.current_password && !this.state.current_password.match(password_re)) ||
             (this.state.new_password && !this.state.new_password.match(password_re)) ||
             (this.state.cf_pass && !this.state.cf_pass.match(password_re))){
-        errors.push('Password must have 6-13 non-special characters')
+            errors.push('Password must have 6-13 non-special characters')
         }
 
         if (this.state.new_password !== this.state.cf_pass) {

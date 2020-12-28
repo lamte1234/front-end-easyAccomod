@@ -56,7 +56,7 @@ export default class ReviewForm extends Component {
             errors.push('Invalid review')
         }
 
-        if(!this.state.star) {
+        if(this.state.star === undefined) {
             errors.push('Warning: You are using an invalid software')
         }
 

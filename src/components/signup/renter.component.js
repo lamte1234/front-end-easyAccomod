@@ -100,15 +100,15 @@ export default class RenterSU extends Component {
         if(this.validate() === true) {
             axios.post('http://localhost:5000/signup/renter', dataRenter)
             .then(res => {
-                console.log(res.data);
-                if (res.data.errors) {
+                if (res.status === 200 && res.data.errors) {
                     this.setState({
                         errors: res.data.errors
                     })
                 };
 
                 if (res.status === 201) {
-                    window.location = '/login';  //handle user page have every thing of user in res.data
+                    alert('Sign up successfully! Please login!');
+                    window.location = '/login';  
                 };
             })
             .catch(err => console.log(err))

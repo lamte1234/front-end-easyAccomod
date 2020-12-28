@@ -152,13 +152,14 @@ export default class OwnerSU extends Component {
         if(this.validate() === true) {
             axios.post('http://localhost:5000/signup/owner', dataOwner)
             .then(res => {
-                if (res.data.errors) {
+                if (res.status === 200 && res.data.errors) {
                     this.setState({
                         errors: res.data.errors
                     })
                 };
 
                 if (res.status === 201) {
+                    alert('Sign up successfully! Please login!');
                     window.location = '/login';  //handle user page have every thing of user in res.data
                 };
             })

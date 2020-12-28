@@ -306,15 +306,19 @@ export default class Post extends Component {
                             <div className="col-sm-6">
                                 <h3>Address Infomation</h3>
                                 <div className="form-group">
+                                    <label htmlFor="city">City</label>
                                     <input className="form-control" id="city" type="text" name="city"
                                     value={this.state.city} onChange={this.onChangeCity} placeholder="City" /></div>
                                 <div className="form-group">
+                                    <label htmlFor="district">District</label>
                                     <input className="form-control" id="district" type="text" name="district"
                                     value={this.state.district} onChange={this.onChangeDistrict} placeholder="District" /></div>
                                 <div className="form-group">
+                                    <label htmlFor="ward">Ward</label>
                                     <input className="form-control" id="ward" type="text" name="ward" 
                                     value={this.state.ward} onChange={this.onChangeWard} placeholder="Ward" /></div>
                                 <div className="form-group">
+                                    <label htmlFor="street">Street</label>
                                     <input className="form-control" id="street" type="text" name="street" 
                                     value={this.state.street} onChange={this.onChangeStreet} placeholder="Street" /></div>
                                 <br/>
@@ -322,6 +326,7 @@ export default class Post extends Component {
                             <div className="col-sm-6">
                                 <h3>Description</h3>
                                 <div className="form-group">
+                                    <label htmlFor="room_type">Room type</label>
                                     <select className="form-control" id="room_type" type="text" name="room_type" 
                                     value={this.state.room_type} onChange={this.onChangeRoomType}>
                                         <option>Apartment</option>
@@ -332,9 +337,11 @@ export default class Post extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group">
+                                    <label htmlFor="rented_rate">Rented Rate</label>
                                     <input className="form-control" id="rented_rate" type="number" name="rented_rate" 
                                     value={this.state.rented_rate} onChange={this.onChangeRentedRate} placeholder="Rented Rate (VND/month)" /></div>
                                 <div className="form-group">
+                                    <label htmlFor="area">Area</label>
                                     <input className="form-control" id="area" type="number" name="area" 
                                     value={this.state.area} onChange={this.onChangeArea} placeholder="Area (M2)" /></div>
                                 <br/>
@@ -384,9 +391,11 @@ export default class Post extends Component {
                             <div className="col-sm-6">
                                 <h3>Services</h3>
                                 <div className="form-group">
+                                    <label htmlFor="electricity">Electricity</label>
                                     <input className="form-control" id="electricity" type="number" name="street" 
                                     value={this.state.electricity} onChange={this.onChangeElectricity} placeholder="Electricity Rate" /></div>
                                 <div className="form-group">
+                                    <label htmlFor="water">Water</label>
                                     <input className="form-control" id="water" type="number" name="water" 
                                     value={this.state.water} onChange={this.onChangeWater} placeholder="Water Rate" /></div>
                                 <h3>Room status</h3>
