@@ -401,7 +401,7 @@ export default class Post extends Component {
                                 }
                             </div>
                         </div>
-                        <button className="btn btn-primary">Commit</button>
+                        <button className="btn btn-info">Commit</button>
                     </form>
                 </div>
             </div>
