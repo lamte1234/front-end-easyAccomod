@@ -87,7 +87,7 @@ export default class Login extends Component {
         if(this.validate() === true){
             axios.post('http://localhost:5000/login', user,{withCredentials: true})
             .then(res => {
-                if(res.status === 200 && res.data.name && res.data.errors) {
+                if(res.status === 200 && res.data.name && res.data.user_type) {
                     localStorage.setItem('user', res.data.name);
                     localStorage.setItem('user_type', res.data.user_type);
                 }
