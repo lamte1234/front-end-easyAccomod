@@ -163,7 +163,7 @@ export default class Search extends Component {
 
     render() {
             return(
-                <div className="">
+                <div className="list">
                     <Nav />
                     <br/>
                     <form method='GET' onSubmit={this.onSubmit} className="search-bar">

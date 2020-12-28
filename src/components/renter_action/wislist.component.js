@@ -57,9 +57,9 @@ export default class Wishlist extends Component {
 
     render() {
         return(
-            <div className="">
+            <div className="main">
                 <Nav />
-                <div className="container">
+                <div className="container list">
                     <br/>
                     <h3>Wish List</h3>
                     {this.postList()}

@@ -10,7 +10,7 @@ export default class RenterWS extends Component {
 
     render() {
         return (
-            <div className="">
+            <div className="main">
                 <Search/>
                 <Footer/>
             </div>
