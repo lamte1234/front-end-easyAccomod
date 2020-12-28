@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+}
+
+.first-quote {
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #f8f9fa;
+}
+
+.second-quote {
+    width: 60%;
+    word-spacing: 0.4px;
+    letter-spacing: 0.3px;
+    font-size: 1.25em;
+    font-weight: 300;
+    text-align: justify;
+    color: #f8f9fa;
+}
+
+.fake-button {
+    color: #f8f9fa;
+    font-size: 1.05em;
+    font-weight: 400;
+    background-color: #23a6d5;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px 15px;
+    transition: all .6s ease-out;
+}
+
+.fake-button:hover {
+    background-color: #25b6eb;
+    border: 1px solid transparent #23d5ab;
+}
+
+.fake-button:out-of-range {
+    transition: all .75s ease-out;
+}
+.button-wrapper {
+    margin: 20px 0;
+}
+
+.quote-wrapper {
+    width: 60%;
+}
+
+.quote {
+    display: flex;
+    margin: 12%;
+    align-items: center;
+}
+
+.tool-image img {
+    width: 110%;
+    height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .quote {
+        display: block;
+        text-align: center;
+    }
+
+    .second-quote {
+        margin: auto;
+    }
+
+    .tool-image img {
+        width: 80%;
+        height: auto;
+    }
+} 
