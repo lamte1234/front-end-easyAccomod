@@ -127,9 +127,9 @@ export default class PostDetail extends Component {
                 this.setState({
                     addWishlistSuccess: true
                 })
+                localStorage.setItem('wishlist', localStorage.getItem('wishlist') + ',' + this.props.match.params.id);
             }
-            console.log(this.state.addWishlistSuccess);
-        }) //handle notification
+        })
         .catch(err => console.log(err));
     }
 

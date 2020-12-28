@@ -107,7 +107,7 @@ export default class RenterSU extends Component {
                     })
                 };
 
-                if (res.data.email) {
+                if (res.status === 201) {
                     window.location = '/login';  //handle user page have every thing of user in res.data
                 };
             })

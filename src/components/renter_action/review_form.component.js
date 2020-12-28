@@ -88,7 +88,7 @@ export default class ReviewForm extends Component {
                 if (res.status === 201){
                     window.location.reload();
                 }
-                if(res.data.errors) {
+                if(res.status === 200 && res.data.errors) {
                     this.setState({
                         errors: res.data.errors
                     })

@@ -87,13 +87,14 @@ export default class Login extends Component {
         if(this.validate() === true){
             axios.post('http://localhost:5000/login', user,{withCredentials: true})
             .then(res => {
-                console.log(res.data);
-                localStorage.setItem('user', res.data.name);
-                localStorage.setItem('user_type', res.data.user_type);
-                if(res.data.wishlist) {
+                if(res.status === 200 && res.data.name && res.data.errors) {
+                    localStorage.setItem('user', res.data.name);
+                    localStorage.setItem('user_type', res.data.user_type);
+                }
+                if(res.status === 200 && res.data.wishlist) {
                     localStorage.setItem('wishlist', res.data.wishlist);
                 }
-                if(res.data.errors) {
+                if(res.status === 200 && res.data.errors) {
                     this.setState({
                         errors: res.data.errors 
                     })
@@ -133,7 +134,7 @@ export default class Login extends Component {
                             <div className='alert alert-danger' key={index}>{err}</div>)
                         }
                         <h2 className="login">Login</h2>
-                        <form action="/login" method="POST" onSubmit={this.onSubmit}>
+                        <form method="POST" onSubmit={this.onSubmit}>
                             <div className="form-group"><label htmlFor="email">Email</label>
                                 <input className="form-control" id="email" type="email"
                                 name="email" value={this.state.email} onChange={this.onChangeEmail} />

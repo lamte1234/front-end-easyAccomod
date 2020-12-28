@@ -146,13 +146,9 @@ export default class Search extends Component {
         }
         axios.get('http://localhost:5000/users/renter/search', config)
         .then(res => {
-        this.setState({
-            posts: []
-        })
-        this.setState({
-            posts: res.data
-        })
-        console.log(this.state.posts);
+            this.setState({
+                posts: res.data
+            })
         })
         .catch(err => console.log(err))
 
