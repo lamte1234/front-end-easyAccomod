@@ -76,6 +76,7 @@ export default class PostDetail extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         axios.get('http://localhost:5000/users/renter/post/'+this.props.match.params.id,{withCredentials: true})
         .then(res => {
             this.setState({
