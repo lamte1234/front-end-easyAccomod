@@ -33,9 +33,13 @@ nav.user-nav {
 .post {
     height: 15em;
     border-radius: 2px;
-    background-color: azure;
     margin-bottom: 2rem;
     border-radius: 5px;
+}
+
+.post:hover {
+    background-color: rgb(248, 246, 246);
+    box-shadow: 1px 1px 1px rgb(194, 193, 193);
 }
 
 .img-demo {
@@ -58,8 +62,8 @@ nav.user-nav {
     color: #f25202;
 }
 
-
-
+/* Review */
+/*  */
 .star {
     visibility:hidden;
     font-size:20px;
@@ -70,7 +74,7 @@ nav.user-nav {
     content: "\2606";
     position: absolute;
     visibility:visible;
-    color: yellow;
+    color: red;
 }
 .star:checked:before {
     content: "\2605";
@@ -118,10 +122,12 @@ nav.user-nav {
     border-radius: 50%;
 }
 
+
 p {
     line-height: 1;
 }
 
+/* Icon */
 .fas {
     margin-right: 10px;
 }
@@ -130,10 +136,7 @@ p {
     font-size: 1.75em;
 }
 
-.newfeed {
-    display: none;
-}
-
+/* z-index */
 .search-bar {
     padding: 10px 0px 0 15px;
     z-index: 1000;
@@ -148,6 +151,8 @@ footer {
     padding: 1.5em;
 }
 
+/* Responsive */
+/*  */
 @media (max-width: 576px) {
     body{font-size: 11px;}
     .img-demo {

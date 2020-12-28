@@ -20,6 +20,15 @@ const Post = props => {
             <Link to={`/users/renter/post/${props.post._id}`}><h3  className="text-capitalize">{props.post.title}</h3></Link>
             <p>Address: {props.post.street}, {props.post.ward}, {props.post.district}, {props.post.city}</p>
             {props.post.status ? <p className="text-success">Available</p>:<p className="text-danger">Rented</p>}
+            <br/>
+            <div className="form-row">
+                <i className="fas fa-eye"></i>
+                <p>This post has {props.post.views} views</p>
+            </div>
+            <div className="form-row">
+                <i className="fas fa-heart"></i>
+                <p>Have {props.post.likes} people save this post to their wishlist</p>
+            </div>
         </div>
         <div className="col-sm-3 col-lg-3 rate">
             <p><span className="rented-rate">{props.post.rented_rate} vnd</span>/month</p>
