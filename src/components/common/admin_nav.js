@@ -19,7 +19,6 @@ export default function NavBar() {
                     <Link to="/users/admin/accounts" className="nav-link text-light">Manage Accounts</Link>
                     <Link to="/users/admin/report" className="nav-link text-light">Manage Reports</Link>
                     <Link to="/users/admin/edit-auth" className="nav-link text-light">Edit Authenticate</Link>
-                    <Link to="/users/admin" className="nav-link text-light">Statistics</Link>
                 </Nav>
                 <Nav>
                     <NavDropdown title={username} id="collasible-nav-dropdown">
