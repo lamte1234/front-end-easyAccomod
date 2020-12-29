@@ -39,7 +39,7 @@ function App() {
   return (
     <Router>
       {
-       (localStorage.getItem('user') === null) ?
+       (document.cookie === "") ?
        <Switch>
           {/* --------------------------COMMON--------------------------------- */}
           <Route path="/" exact component={Home}></Route>
@@ -49,12 +49,13 @@ function App() {
           <Route path='/signup' exact component={Signup}></Route>
           <Route path='/signup/renter' exact component={RenterSU}></Route>
           <Route path='/signup/owner' exact component={OwnerSU}></Route>
+          <Redirect to="/login"></Redirect>
       </Switch>
         :
       null
     }
       {/* ----------------------------RENTER------------------------------ */}
-      { (localStorage.getItem('user_type') === 'renter') ?
+      { (localStorage.getItem('user_type') === 'renter' && document.cookie !== "") ?
       <Switch>
         <Route path='/users/renter' exact component={RenterWS}></Route>
         <Route path='/users/renter/search' exact component={Search}></Route>
@@ -65,7 +66,7 @@ function App() {
       </Switch>
       :
       /* ---------------------------OWNER-------------------------------- */
-        (localStorage.getItem('user_type') === 'owner') ?
+        (localStorage.getItem('user_type') === 'owner' && document.cookie !== "") ?
       <Switch>
         <Route path='/users/owner' exact component={OwnerWS}></Route>
         <Route path='/users/owner/post' exact component={Post}></Route>
@@ -80,7 +81,7 @@ function App() {
       </Switch>
       :
       /* ----------------------------ADMIN--------------------------------------- */
-      (localStorage.getItem('user_type') === 'admin') ?
+      (localStorage.getItem('user_type') === 'admin' && document.cookie !== "") ?
       <Switch>
         <Route path='/users/admin' exact component={AdminWS}></Route>
         <Route path='/users/admin/accounts' exact component={AdminAcc}></Route>
@@ -93,7 +94,7 @@ function App() {
         <Redirect to='/users/admin'></Redirect>
       </Switch>
       :
-      <Redirect to="/"></Redirect>
+        null
       }
     </Router>
   );

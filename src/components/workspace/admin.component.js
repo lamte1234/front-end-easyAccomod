@@ -21,7 +21,7 @@ export default class AdminWS extends Component {
                             HAPPINESS.
                         </div>
                         <div className="second-quote">
-                            Attitude is a little things that makes a big difference.  Together, let make
+                            Attitude is a little thing that makes a big difference.  Together, let make
                             our company services developed, not the best choice but not the second choice.
                         </div>
                         <div className="button-wrapper">
