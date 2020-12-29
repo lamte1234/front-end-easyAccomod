@@ -44,8 +44,6 @@ export default class Signup extends Component {
                         </div>
                     </div>
                 </div>
-                <h1 className="text-light slogan">Register an account to access the website</h1>
-                
             </div>
         );
     }
